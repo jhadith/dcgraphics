@@ -1,0 +1,7 @@
+SITIO WEB DCGRAPHICS: 
+React + Tailwind funcionando.
+Rutas creadas.
+Home separado de las vistas hijas.
+Una plantilla padre reutilizable para servicios.
+Contenido centralizado para evitar código quemado y repetido.
+Estructura preparada para crecer sin desorden.

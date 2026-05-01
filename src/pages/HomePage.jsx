@@ -1,0 +1,133 @@
+import { ArrowRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
+import { contact, services, sharedBenefits, testimonials } from "../data/siteContent.js";
+import { ContactStrip } from "../components/sections/ContactStrip.jsx";
+import { ButtonLink } from "../components/ui/ButtonLink.jsx";
+import { MediaFrame } from "../components/ui/MediaFrame.jsx";
+import { SectionHeader } from "../components/ui/SectionHeader.jsx";
+
+export function HomePage() {
+  const heroMedia = services[1].media[0];
+
+  return (
+    <>
+      <section className="overflow-hidden bg-white">
+        <div className="container-page grid min-h-[calc(100vh-5rem)] gap-10 py-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-16">
+          <div className="max-w-2xl">
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-signal">Houston print and sign shop</p>
+            <h1 className="mt-4 font-display text-5xl font-black leading-[1.02] text-ink sm:text-6xl lg:text-7xl">
+              Custom printing, signs, wraps, and apparel.
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-graphite">
+              DG Graphics helps local businesses design, produce, and install visual materials that get seen: storefront signs,
+              vehicle graphics, banners, window vinyl, print products, and branded apparel.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <ButtonLink href={contact.phoneHref}>
+                <Phone size={18} />
+                Get a Free Quote
+              </ButtonLink>
+              <ButtonLink href={contact.whatsappHref} variant="light">
+                <MessageCircle size={18} />
+                WhatsApp Us
+              </ButtonLink>
+            </div>
+            <div className="mt-8 grid gap-3 text-sm font-semibold text-graphite sm:grid-cols-2">
+              <a className="focus-ring flex items-center gap-2 rounded-md hover:text-ink" href={contact.mapHref}>
+                <MapPin size={17} className="text-signal" />
+                {contact.address}
+              </a>
+              <a className="focus-ring flex items-center gap-2 rounded-md hover:text-ink" href={contact.emailHref}>
+                <Mail size={17} className="text-signal" />
+                {contact.email}
+              </a>
+            </div>
+          </div>
+
+          <div className="grid gap-4">
+            <MediaFrame media={heroMedia} className="aspect-[5/4]" />
+            <div className="grid gap-4 sm:grid-cols-3">
+              {services.slice(0, 3).map((service) => (
+                <Link
+                  key={service.slug}
+                  to={`/${service.slug}`}
+                  className="focus-ring rounded-lg border border-line bg-paper p-4 transition hover:-translate-y-0.5 hover:border-ink hover:bg-white"
+                >
+                  <p className="font-display text-base font-bold text-ink">{service.label}</p>
+                  <p className="mt-2 text-sm text-graphite">{service.process}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="container-page">
+          <SectionHeader
+            eyebrow="Services"
+            title="One shop for the main things a business needs to be seen."
+            text="The home keeps the broad overview. Detailed pages focus on each service category."
+          />
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => (
+              <Link
+                key={service.slug}
+                to={`/${service.slug}`}
+                className="focus-ring group rounded-lg border border-line bg-white p-5 transition hover:-translate-y-0.5 hover:shadow-soft"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-bold uppercase tracking-[0.16em] text-signal">{service.eyebrow}</p>
+                    <h3 className="mt-3 font-display text-2xl font-bold text-ink">{service.label}</h3>
+                  </div>
+                  <ArrowRight className="mt-1 text-graphite transition group-hover:translate-x-1 group-hover:text-signal" size={22} />
+                </div>
+                <p className="mt-4 text-sm leading-6 text-graphite">{service.summary}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16">
+        <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <SectionHeader
+            eyebrow="Why choose DG Graphics"
+            title="Built for local businesses that need clear, practical execution."
+            text="From concept to finished product, the site should communicate speed, clarity, and real production capability."
+          />
+          <div className="grid gap-4 md:grid-cols-3">
+            {sharedBenefits.map((benefit) => (
+              <article key={benefit.title} className="rounded-lg border border-line bg-paper p-6">
+                <h3 className="font-display text-xl font-bold text-ink">{benefit.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-graphite">{benefit.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="container-page">
+          <SectionHeader eyebrow="Reviews" title="Trusted by Houston businesses." />
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {testimonials.map((item) => (
+              <figure key={item.name} className="rounded-lg border border-line bg-white p-6">
+                <div className="flex gap-1 text-gold" aria-label="Five star review">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <span key={index}>*</span>
+                  ))}
+                </div>
+                <blockquote className="mt-4 text-sm leading-6 text-graphite">&quot;{item.quote}&quot;</blockquote>
+                <figcaption className="mt-5 font-semibold text-ink">{item.name}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ContactStrip />
+    </>
+  );
+}
