@@ -36,7 +36,7 @@ export function ContactPage() {
       <section className="py-16 lg:py-20">
         <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-signal">Hablamos Espanol</p>
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-accent">Hablamos Espanol</p>
             <h1 className="mt-4 font-display text-5xl font-black leading-tight text-ink">Contact DG Graphics.</h1>
             <p className="mt-5 text-lg leading-8 text-graphite">
               Call, WhatsApp, email, or stop by the Houston shop for free quotes on signs, wraps, window graphics,
@@ -63,7 +63,7 @@ export function ContactPage() {
                   href={method.href}
                   className="focus-ring rounded-lg border border-line bg-paper p-5 transition hover:border-ink hover:bg-white"
                 >
-                  <Icon className="text-signal" size={24} />
+                  <Icon className="text-accent" size={24} />
                   <p className="mt-5 font-display text-xl font-bold text-ink">{method.label}</p>
                   <p className="mt-2 text-sm leading-6 text-graphite">{method.value}</p>
                 </a>

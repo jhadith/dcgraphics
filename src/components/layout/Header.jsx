@@ -22,7 +22,7 @@ export function Header() {
     <header className="sticky top-0 z-50 px-3 py-3">
       <div className="container-page relative flex h-20 items-center justify-between gap-5 overflow-hidden rounded-2xl border border-white/45 bg-white/55 shadow-[0_18px_55px_rgba(17,19,24,0.12)] backdrop-blur-2xl backdrop-saturate-150">
         <div
-          className={`pointer-events-none absolute inset-0 scale-110 bg-[linear-gradient(90deg,rgba(226,45,45,0.36)_0%,rgba(255,255,255,0.62)_35%,rgba(255,255,255,0.48)_62%,rgba(247,224,44,0.36)_100%)] blur-2xl transition-opacity duration-300 ease-out ${
+          className={`pointer-events-none absolute inset-0 scale-110 bg-[linear-gradient(90deg,rgba(244,214,12,0.30)_0%,rgba(255,255,255,0.62)_35%,rgba(255,255,255,0.48)_62%,rgba(247,224,44,0.36)_100%)] blur-2xl transition-opacity duration-300 ease-out ${
             isScrolled ? "opacity-0" : "opacity-100"
           }`}
           aria-hidden="true"
@@ -54,14 +54,17 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="relative z-10 hidden items-center gap-3 lg:flex">
+        <div className="relative z-10 hidden flex-col items-center gap-1 lg:flex">
           <a
-            className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-md text-sm font-black text-navy transition-colors duration-200 hover:text-graphite"
+            className="focus-ring inline-flex items-center justify-center gap-2 rounded-md text-sm font-black text-navy transition-colors duration-200 hover:text-graphite"
             href={contact.phoneHref}
           >
             <Phone size={17} />
             {contact.phone}
           </a>
+          <span className="text-center text-xs font-bold text-graphite">
+            English/Spanish
+          </span>
         </div>
 
         <button
@@ -99,6 +102,9 @@ export function Header() {
               <Phone size={17} />
               {contact.phone}
             </a>
+            <span className="justify-self-center text-center text-xs font-bold text-graphite">
+              English/Spanish
+            </span>
           </nav>
         </div>
       ) : null}

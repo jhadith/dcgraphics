@@ -2,6 +2,7 @@ import { ArrowRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { contact, services, sharedBenefits, testimonials } from "../data/siteContent.js";
 import { ContactStrip } from "../components/sections/ContactStrip.jsx";
+import { TopicImageSlider } from "../components/sections/TopicImageSlider.jsx";
 import { VerticalWordSlider } from "../components/sections/VerticalWordSlider.jsx";
 import { ButtonLink } from "../components/ui/ButtonLink.jsx";
 import { MediaFrame } from "../components/ui/MediaFrame.jsx";
@@ -9,6 +10,20 @@ import { SectionHeader } from "../components/ui/SectionHeader.jsx";
 
 export function HomePage() {
   const heroMedia = services[1].media[0];
+  const overviewMedia = services[4].media[0];
+  const topicSliderItems = services
+    .map((service) => {
+      const image = service.media.find((media) => media.type === "image");
+
+      return image
+        ? {
+            label: service.label,
+            src: image.src,
+            alt: image.alt,
+          }
+        : null;
+    })
+    .filter(Boolean);
 
   return (
     <>
@@ -42,29 +57,20 @@ export function HomePage() {
                 WhatsApp Us
               </ButtonLink>
             </div>
-            <div className="mt-6 grid gap-3 text-sm font-semibold text-graphite sm:grid-cols-2">
+            <div className="mt-6 grid gap-3 text-sm font-semibold text-graphite">
               <a className="focus-ring flex items-center gap-2 rounded-md hover:text-ink" href={contact.mapHref}>
-                <MapPin size={17} className="text-signal" />
+                <MapPin size={17} className="text-accent" />
                 {contact.address}
               </a>
               <a className="focus-ring flex items-center gap-2 rounded-md hover:text-ink" href={contact.emailHref}>
-                <Mail size={17} className="text-signal" />
+                <Mail size={17} className="text-accent" />
                 {contact.email}
               </a>
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3">
-            {services.slice(0, 3).map((service) => (
-              <Link
-                key={service.slug}
-                to={`/${service.slug}`}
-                className="focus-ring rounded-lg border border-line bg-paper p-4 transition hover:-translate-y-0.5 hover:border-ink hover:bg-white"
-              >
-                <p className="font-display text-base font-bold text-ink">{service.label}</p>
-                <p className="mt-2 text-sm text-graphite">{service.process}</p>
-              </Link>
-            ))}
+          <div>
+            <MediaFrame media={overviewMedia} className="h-[260px] sm:h-[320px] lg:h-[360px]" />
           </div>
         </div>
       </section>
@@ -85,14 +91,15 @@ export function HomePage() {
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-sm font-bold uppercase tracking-[0.16em] text-signal">{service.eyebrow}</p>
+                    <p className="text-sm font-bold uppercase tracking-[0.16em] text-accent">{service.eyebrow}</p>
                     <h3 className="mt-3 font-display text-2xl font-bold text-ink">{service.label}</h3>
                   </div>
-                  <ArrowRight className="mt-1 text-graphite transition group-hover:translate-x-1 group-hover:text-signal" size={22} />
+                  <ArrowRight className="mt-1 text-graphite transition group-hover:translate-x-1 group-hover:text-accent" size={22} />
                 </div>
                 <p className="mt-4 text-sm leading-6 text-graphite">{service.summary}</p>
               </Link>
             ))}
+            <TopicImageSlider items={topicSliderItems} />
           </div>
         </div>
       </section>

@@ -14,7 +14,7 @@ export function ServiceTemplate({ service }) {
       <section className="border-b border-line">
         <div className="container-page grid gap-10 py-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:py-20">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-signal">{service.eyebrow}</p>
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-accent">{service.eyebrow}</p>
             <h1 className="mt-4 font-display text-4xl font-black leading-tight text-ink sm:text-5xl">{service.title}</h1>
             <p className="mt-5 text-lg leading-8 text-graphite">{service.summary}</p>
             <p className="mt-5 text-sm font-bold uppercase tracking-[0.18em] text-graphite">{service.process}</p>
@@ -91,12 +91,12 @@ export function ServiceTemplate({ service }) {
       <section className="py-16">
         <div className="container-page grid gap-8 rounded-lg border border-line bg-white p-6 md:grid-cols-[1fr_1.2fr] md:p-8">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-signal">Visit the shop</p>
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-accent">Visit the shop</p>
             <h2 className="mt-3 font-display text-3xl font-bold text-ink">Houston consultations and quotes.</h2>
           </div>
           <div className="grid gap-4 text-sm text-graphite sm:grid-cols-2">
             <a className="focus-ring flex gap-3 rounded-md hover:text-ink" href={contact.mapHref}>
-              <MapPin className="shrink-0 text-signal" size={20} />
+              <MapPin className="shrink-0 text-accent" size={20} />
               <span>{contact.address}</span>
             </a>
             <div>

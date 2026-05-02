@@ -8,7 +8,7 @@ export default {
         graphite: "#2C3038",
         paper: "#F8F7F4",
         line: "#E5E1DA",
-        signal: "#E22D2D",
+        accent: "#F4D60C",
         gold: "#F8B733",
         highlight: "#F7E02C",
         navy: "#000042",

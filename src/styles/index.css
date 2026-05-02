@@ -42,7 +42,11 @@ a {
 }
 
 .focus-ring {
-  @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal;
+  @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+}
+
+.focus-ring:focus-visible {
+  outline-color: #f4d60c;
 }
 
 .vertical-word-slider {
@@ -50,7 +54,7 @@ a {
   height: 1.03em;
   overflow: hidden;
   vertical-align: -0.08em;
-  color: #0d5b72;
+  color: #f4d60c;
 }
 
 .vertical-word-track {
