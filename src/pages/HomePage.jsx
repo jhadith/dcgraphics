@@ -2,6 +2,7 @@ import { ArrowRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { contact, services, sharedBenefits, testimonials } from "../data/siteContent.js";
 import { ContactStrip } from "../components/sections/ContactStrip.jsx";
+import { HeroProductSlider } from "../components/sections/HeroProductSlider.jsx";
 import { TopicImageSlider } from "../components/sections/TopicImageSlider.jsx";
 import { VerticalWordSlider } from "../components/sections/VerticalWordSlider.jsx";
 import { ButtonLink } from "../components/ui/ButtonLink.jsx";
@@ -9,8 +10,18 @@ import { MediaFrame } from "../components/ui/MediaFrame.jsx";
 import { SectionHeader } from "../components/ui/SectionHeader.jsx";
 
 export function HomePage() {
-  const heroMedia = services[1].media[0];
   const overviewMedia = services[4].media[0];
+  const heroSliderItems = services
+    .flatMap((service) =>
+      service.media
+        .filter((media) => media.type === "image")
+        .map((media) => ({
+          label: service.label,
+          src: media.src,
+          alt: media.alt,
+        })),
+    )
+    .slice(0, 6);
   const topicSliderItems = services
     .map((service) => {
       const image = service.media.find((media) => media.type === "image");
@@ -37,7 +48,7 @@ export function HomePage() {
           </div>
 
           <div className="lg:pt-1">
-            <MediaFrame media={heroMedia} fit="contain" className="h-[44svh] min-h-[300px] bg-white sm:h-[48svh] lg:h-[58svh] lg:min-h-[470px]" />
+            <HeroProductSlider items={heroSliderItems} className="h-[44svh] min-h-[300px] sm:h-[48svh] lg:h-[58svh] lg:min-h-[470px]" />
           </div>
         </div>
 
