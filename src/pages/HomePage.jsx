@@ -12,17 +12,26 @@ export function HomePage() {
   return (
     <>
       <section className="overflow-hidden bg-white">
-        <div className="container-page grid min-h-[calc(100vh-5rem)] gap-10 py-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-16">
-          <div className="max-w-2xl">
+        <div className="container-page grid min-h-[calc(100svh-6.5rem)] gap-8 pt-4 pb-6 lg:grid-cols-[0.88fr_1.12fr] lg:items-center lg:pt-3 lg:pb-8">
+          <div className="max-w-3xl">
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-signal">Houston print and sign shop</p>
-            <h1 className="mt-4 font-display text-5xl font-black leading-[1.02] text-ink sm:text-6xl lg:text-7xl">
+            <h1 className="mt-3 font-display text-6xl font-black leading-[1.01] text-ink sm:text-7xl lg:text-[5.25rem] xl:text-[6.35rem]">
               Custom printing, signs, wraps, and apparel.
             </h1>
-            <p className="mt-6 text-lg leading-8 text-graphite">
+          </div>
+
+          <div className="lg:pt-1">
+            <MediaFrame media={heroMedia} fit="contain" className="h-[44svh] min-h-[300px] bg-white sm:h-[48svh] lg:h-[58svh] lg:min-h-[470px]" />
+          </div>
+        </div>
+
+        <div className="container-page grid gap-6 border-t border-line py-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div>
+            <p className="text-lg leading-8 text-graphite">
               DG Graphics helps local businesses design, produce, and install visual materials that get seen: storefront signs,
               vehicle graphics, banners, window vinyl, print products, and branded apparel.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={contact.phoneHref}>
                 <Phone size={18} />
                 Get a Free Quote
@@ -32,7 +41,7 @@ export function HomePage() {
                 WhatsApp Us
               </ButtonLink>
             </div>
-            <div className="mt-8 grid gap-3 text-sm font-semibold text-graphite sm:grid-cols-2">
+            <div className="mt-6 grid gap-3 text-sm font-semibold text-graphite sm:grid-cols-2">
               <a className="focus-ring flex items-center gap-2 rounded-md hover:text-ink" href={contact.mapHref}>
                 <MapPin size={17} className="text-signal" />
                 {contact.address}
@@ -44,20 +53,17 @@ export function HomePage() {
             </div>
           </div>
 
-          <div className="grid gap-4">
-            <MediaFrame media={heroMedia} className="aspect-[5/4]" />
-            <div className="grid gap-4 sm:grid-cols-3">
-              {services.slice(0, 3).map((service) => (
-                <Link
-                  key={service.slug}
-                  to={`/${service.slug}`}
-                  className="focus-ring rounded-lg border border-line bg-paper p-4 transition hover:-translate-y-0.5 hover:border-ink hover:bg-white"
-                >
-                  <p className="font-display text-base font-bold text-ink">{service.label}</p>
-                  <p className="mt-2 text-sm text-graphite">{service.process}</p>
-                </Link>
-              ))}
-            </div>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {services.slice(0, 3).map((service) => (
+              <Link
+                key={service.slug}
+                to={`/${service.slug}`}
+                className="focus-ring rounded-lg border border-line bg-paper p-4 transition hover:-translate-y-0.5 hover:border-ink hover:bg-white"
+              >
+                <p className="font-display text-base font-bold text-ink">{service.label}</p>
+                <p className="mt-2 text-sm text-graphite">{service.process}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

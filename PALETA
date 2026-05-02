@@ -1,0 +1,33 @@
+azules mas claros
+.color1 { #2d1785 };
+.color2 { #221174 };
+.color3 { #170c64 };
+.color4 { #0b0653 };
+.color5 { #000042 };
+azules mas oscuros 
+.color1 { #231273 };
+.color2 { #1a0d56 };
+.color3 { #110939 };
+.color4 { #09041d };
+.color5 { #000000 };
+
+NARANJAS 
+.color1 { #f4d60c };
+.color2 { #f7e02c };
+.color3 { #faeb4c };
+.color4 { #fcf56b };
+.color5 { #ffff8b };
+
+POLICROMATICA: 
+.color1 {color: #11231d;}
+.color2 {color: #0d5b72;}
+.color3 {color: #ff8a08;}
+.color4 {color: #ffec65;}
+.color5 {color: #fffbd7;}
+
+home page: 
+carrusel de imagenes debe moverse interactivamente, 
+con un poco de efusividad 
+
+_menu de opciones: cada opcion debe resaltarse 
+

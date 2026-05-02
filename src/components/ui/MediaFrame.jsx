@@ -1,7 +1,8 @@
-export function MediaFrame({ media, className = "" }) {
+export function MediaFrame({ media, className = "", fit = "cover" }) {
   if (!media) return null;
 
-  const sharedClasses = "h-full w-full object-cover";
+  const objectFit = fit === "contain" ? "object-contain" : "object-cover";
+  const sharedClasses = `h-full w-full ${objectFit}`;
 
   return (
     <div className={`overflow-hidden rounded-lg bg-ink shadow-soft ${className}`}>

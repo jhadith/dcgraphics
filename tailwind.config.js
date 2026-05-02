@@ -10,6 +10,9 @@ export default {
         line: "#E5E1DA",
         signal: "#E22D2D",
         gold: "#F8B733",
+        highlight: "#F7E02C",
+        navy: "#000042",
+        royal: "#2D1785",
         cyan: "#0EA5B7",
       },
       fontFamily: {
