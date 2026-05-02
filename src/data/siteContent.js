@@ -5,7 +5,10 @@ export const contact = {
   email: "info@dg-graphics.com",
   emailHref: "mailto:info@dg-graphics.com",
   address: "14130 Westheimer Rd, Suite C, Houston, TX 77077",
+  shopAddress: "14130 Westheimer Rd, Houston, TX 77077, EE. UU.",
   mapHref: "https://www.google.com/maps/search/?api=1&query=14130%20Westheimer%20Rd%20Suite%20C%20Houston%20TX%2077077",
+  mapEmbedHref:
+    "https://www.google.com/maps?q=14130%20Westheimer%20Rd%20Suite%20C%2C%20Houston%2C%20TX%2077077&output=embed",
   hours: [
     { label: "Monday - Friday", value: "9am - 6pm" },
     { label: "Saturday", value: "10am - 3pm" },
@@ -16,7 +19,7 @@ export const contact = {
 export const navigation = [
   { label: "Home", href: "/" },
   { label: "Business Signs", href: "/business-signs" },
-  { label: "Vehicle Wraps", href: "/vehicle-wraps" },
+  { label: "Vehicle Graphics", href: "/vehicle-graphics" },
   { label: "Window Graphics", href: "/window-graphics" },
   { label: "Banners", href: "/promotional-signs" },
   { label: "Printing & Apparel", href: "/printing-apparel" },
@@ -115,8 +118,8 @@ export const services = [
     media: mediaLibrary.signs,
   },
   {
-    slug: "vehicle-wraps",
-    label: "Vehicle Wraps",
+    slug: "vehicle-graphics",
+    label: "Vehicle Graphics",
     eyebrow: "Houston wrap shop",
     title: "Turn cars, trucks, vans, and fleets into moving billboards.",
     summary:

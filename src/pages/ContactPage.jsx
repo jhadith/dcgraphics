@@ -97,27 +97,57 @@ export function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-ink py-16 text-white">
-        <div className="container-page grid gap-8 md:grid-cols-3">
+      <section className="py-16">
+        <div className="container-page grid gap-8 rounded-2xl border border-white/45 bg-white/55 p-6 shadow-[0_18px_55px_rgba(17,19,24,0.12)] backdrop-blur-2xl md:grid-cols-3 md:p-8">
           <div>
-            <p className="font-display text-sm font-bold uppercase tracking-[0.18em] text-gold">Business hours</p>
-            <div className="mt-4 grid gap-2 text-sm text-white/75">
+            <p className="font-display text-sm font-bold uppercase tracking-[0.18em] text-accent">Business hours</p>
+            <div className="mt-4 grid gap-2 text-sm text-graphite">
               {contact.hours.map((item) => (
                 <p key={item.label}>
-                  <strong className="text-white">{item.label}:</strong> {item.value}
+                  <strong className="text-ink">{item.label}:</strong> {item.value}
                 </p>
               ))}
             </div>
           </div>
           <div className="md:col-span-2">
-            <p className="font-display text-sm font-bold uppercase tracking-[0.18em] text-gold">Service areas</p>
+            <p className="font-display text-sm font-bold uppercase tracking-[0.18em] text-accent">Service areas</p>
             <div className="mt-4 flex flex-wrap gap-2">
               {contact.serviceAreas.map((area) => (
-                <span key={area} className="rounded-full border border-white/15 px-3 py-1 text-sm text-white/75">
+                <span key={area} className="rounded-full border border-line bg-white/45 px-3 py-1 text-sm font-semibold text-graphite">
                   {area}
                 </span>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="container-page grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-accent">Visit Our Shop in Houston</p>
+            <h2 className="mt-3 font-display text-4xl font-black leading-tight text-ink">
+              Walk in or call — we&apos;ll have your quote ready fast.
+            </h2>
+            <a
+              className="focus-ring mt-5 inline-flex items-start gap-3 rounded-md text-base font-semibold leading-7 text-graphite hover:text-ink"
+              href={contact.mapHref}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MapPin className="mt-1 shrink-0 text-accent" size={20} />
+              {contact.shopAddress}
+            </a>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-white/45 bg-white/55 p-2 shadow-[0_18px_55px_rgba(17,19,24,0.12)] backdrop-blur-2xl">
+            <iframe
+              className="h-[360px] w-full rounded-xl border-0"
+              title="DG Graphics location on Google Maps"
+              src={contact.mapEmbedHref}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </section>
