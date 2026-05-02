@@ -2,6 +2,7 @@ import { ArrowRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { contact, services, sharedBenefits, testimonials } from "../data/siteContent.js";
 import { ContactStrip } from "../components/sections/ContactStrip.jsx";
+import { VerticalWordSlider } from "../components/sections/VerticalWordSlider.jsx";
 import { ButtonLink } from "../components/ui/ButtonLink.jsx";
 import { MediaFrame } from "../components/ui/MediaFrame.jsx";
 import { SectionHeader } from "../components/ui/SectionHeader.jsx";
@@ -11,12 +12,12 @@ export function HomePage() {
 
   return (
     <>
-      <section className="overflow-hidden bg-white">
+      <section className="overflow-hidden">
         <div className="container-page grid min-h-[calc(100svh-6.5rem)] gap-8 pt-4 pb-6 lg:grid-cols-[0.88fr_1.12fr] lg:items-center lg:pt-3 lg:pb-8">
           <div className="max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-signal">Houston print and sign shop</p>
+           
             <h1 className="mt-3 font-display text-6xl font-black leading-[1.01] text-ink sm:text-7xl lg:text-[5.25rem] xl:text-[6.35rem]">
-              Custom printing, signs, wraps, and apparel.
+              WE BUILD <VerticalWordSlider /> THAT GROW YOUR BUSSINESS
             </h1>
           </div>
 
@@ -96,7 +97,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="bg-white py-16">
+      <section className="py-16">
         <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <SectionHeader
             eyebrow="Why choose DG Graphics"

@@ -11,7 +11,7 @@ export function ServiceTemplate({ service }) {
 
   return (
     <>
-      <section className="border-b border-line bg-white">
+      <section className="border-b border-line">
         <div className="container-page grid gap-10 py-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:py-20">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-signal">{service.eyebrow}</p>
@@ -39,7 +39,7 @@ export function ServiceTemplate({ service }) {
         </div>
       </section>
 
-      <section className="bg-white py-16">
+      <section className="py-16">
         <div className="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <SectionHeader
             eyebrow="What we make"
@@ -76,7 +76,7 @@ export function ServiceTemplate({ service }) {
       </section>
 
       {supportingMedia.length ? (
-        <section className="bg-white py-16">
+        <section className="py-16">
           <div className="container-page">
             <SectionHeader eyebrow="Selected work" title="Real project media from DG Graphics." />
             <div className="mt-8 grid gap-4 md:grid-cols-2">

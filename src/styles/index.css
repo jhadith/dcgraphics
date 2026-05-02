@@ -19,9 +19,11 @@ body {
   min-width: 320px;
   margin: 0;
   background:
-    linear-gradient(rgba(248, 247, 244, 0.94), rgba(248, 247, 244, 0.94)),
-    radial-gradient(circle at top left, rgba(248, 183, 51, 0.16), transparent 32rem),
-    #f8f7f4;
+    radial-gradient(circle at 16% 12%, rgba(13, 91, 114, 0.24), transparent 34rem),
+    radial-gradient(circle at 88% 8%, rgba(255, 236, 101, 0.38), transparent 34rem),
+    radial-gradient(circle at 78% 66%, rgba(255, 138, 8, 0.12), transparent 38rem),
+    linear-gradient(112deg, #d8edf1 0%, #f8f7f4 44%, #fffbd7 100%);
+  background-attachment: fixed;
 }
 
 img,
@@ -41,4 +43,58 @@ a {
 
 .focus-ring {
   @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal;
+}
+
+.vertical-word-slider {
+  display: inline-block;
+  height: 1.03em;
+  overflow: hidden;
+  vertical-align: -0.08em;
+  color: #0d5b72;
+}
+
+.vertical-word-track {
+  display: flex;
+  flex-direction: column;
+  animation: vertical-word-slide 8s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
+.vertical-word {
+  display: block;
+  height: 1.03em;
+  line-height: 1.03;
+  white-space: nowrap;
+}
+
+@keyframes vertical-word-slide {
+  0%,
+  16% {
+    transform: translateY(0%);
+  }
+
+  23%,
+  39% {
+    transform: translateY(-20%);
+  }
+
+  46%,
+  62% {
+    transform: translateY(-40%);
+  }
+
+  69%,
+  85% {
+    transform: translateY(-60%);
+  }
+
+  92%,
+  100% {
+    transform: translateY(-80%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vertical-word-track {
+    animation: none;
+  }
 }

@@ -33,7 +33,7 @@ const contactMethods = [
 export function ContactPage() {
   return (
     <>
-      <section className="bg-white py-16 lg:py-20">
+      <section className="py-16 lg:py-20">
         <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-signal">Hablamos Espanol</p>
