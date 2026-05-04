@@ -4,7 +4,7 @@
 
 :root {
   color: #111318;
-  background: #f8f7f4;
+  background: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -19,11 +19,10 @@ body {
   min-width: 320px;
   margin: 0;
   background:
-    radial-gradient(circle at 16% 12%, rgba(45, 23, 133, 0.72), transparent 38rem),
-    radial-gradient(circle at 30% 58%, rgba(13, 91, 114, 0.54), transparent 34rem),
-    radial-gradient(circle at 88% 8%, rgba(244, 214, 12, 0.68), transparent 36rem),
-    radial-gradient(circle at 78% 66%, rgba(255, 138, 8, 0.5), transparent 40rem),
-    linear-gradient(112deg, #b9e2e8 0%, #f6f2df 42%, #fff18f 100%);
+    radial-gradient(42rem 58rem at 16% 4%, rgba(23, 43, 133, 0.2) 0%, rgba(23, 43, 133, 0.2) 34%, rgba(23, 43, 133, 0) 68%),
+    radial-gradient(48rem 58rem at 84% 42%, rgba(23, 43, 133, 0.2) 0%, rgba(23, 43, 133, 0.2) 32%, rgba(23, 43, 133, 0) 70%),
+    radial-gradient(44rem 60rem at 18% 96%, rgba(23, 43, 133, 0.2) 0%, rgba(23, 43, 133, 0.2) 35%, rgba(23, 43, 133, 0) 72%),
+    linear-gradient(135deg, rgba(0, 31, 134, 0.2) 0%, rgba(0, 31, 134, 0.2) 100%);
   background-attachment: fixed;
 }
 

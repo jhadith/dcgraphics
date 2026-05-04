@@ -1,6 +1,6 @@
 azules mas claros
-.color1 { #2d1785 };
-.color2 { #221174 };
+.color1 { #172b85 };
+.color2 { #001f86 };
 .color3 { #170c64 };
 .color4 { #0b0653 };
 .color5 { #000042 };
