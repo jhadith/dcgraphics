@@ -1,0 +1,56 @@
+
+Trust section: hay reviews, pero faltan métricas tipo “projects completed”,
+ “years experience”, “5-star rated”. (esta seccion esta al final de la pagina
+ de home, esto lo colocaremos abajo de reviews, se tiene q ver llamativo, no solo 
+ recuadros en blanco, recoger esa info de la pagina principal https://dg-graphics.com/ )
+
+Service area: existe en contacto, pero falta sección visible en Home. 
+(colocar una referencia a contacto abajo del correo electronico
+algo como donde nos encontramos )
+Adicionalemente en contacto hay que cambiar la disposicion, la ubicacion
+se ubica abajo inmediatamente despues de las tarjetas de contacto
+
+
+Real project images: actualmente usamos varias URLs remotas de la web;
+ falta reemplazarlas por el contenido nuevo del cliente. (realizado)
+
+Repetir CTA cada sección: hay CTAs, pero no en todas las secciones.
+(hacerlo, no entiendo)
+
+SEO: hay title/meta global en index.html, pero faltan títulos/metas por
+ página o una solución tipo React Helmet. (revisar, no entiendo)
+
+
+No cumplido / falta
+
+
+Dropdown en Business Signs con:
+
+Window Graphics, Channel Letters, Light Box Signs, Pylon Signs.(no se como aplicarlo, aplicarlo a discrecion)
+
+Página Our Work. (agregar y agregar las tarjetas con las imagenes por topico)
+
+Featured Work como grid grande de imágenes reales. (? agregar en our work supongo)
+
+Process section: Design -> Production -> Installation. 
+(Built for local businesses that need clear, practical execution. colocar abajo de esta seccion,
+que no ocupe mucho espacio, ocupar espacio horizontalmente, diseño como diagrama de flujo 
+pero llamativo)
+
+
+Sticky/floating WhatsApp button en todas las páginas.(realizado)
+
+Call Now visible todo el tiempo, no solo en header. (esta visible siempre en la barra?)
+
+Quote form real simple y rápido. Ahora hay mailto links, pero no formulario.(no entiendo)
+
+Páginas individuales para subservicios importantes, si el cliente
+ quiere SEO fuerte: channel letters, light box signs, pylon signs, 
+ full wraps, banners, business cards, etc. (no entiendo)
+
+Keywords exactas más presentes:
+
+sign company Houston, vehicle wraps Houston, window graphics Houston. 
+(colocar encima de cada titulo de cada pagina)
+
+Optimización de headings/titles por página. (no entiendo)

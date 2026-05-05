@@ -5,12 +5,19 @@ import { MediaFrame } from "../ui/MediaFrame.jsx";
 import { SectionHeader } from "../ui/SectionHeader.jsx";
 import { TagList } from "../ui/TagList.jsx";
 import { ContactStrip } from "./ContactStrip.jsx";
+import { SectionCta } from "./SectionCta.jsx";
+import { Seo } from "../ui/Seo.jsx";
 
 export function ServiceTemplate({ service }) {
   const [featuredMedia, ...supportingMedia] = service.media;
 
   return (
     <>
+      <Seo
+        title={`${service.label} Houston, TX | DG Graphics LLC`}
+        description={`${service.summary} Get a fast quote from DG Graphics LLC in Houston, TX.`}
+      />
+
       <section className="border-b border-line">
         <div className="container-page grid gap-10 py-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:py-20">
           <div>
@@ -36,6 +43,10 @@ export function ServiceTemplate({ service }) {
       <section className="py-12">
         <div className="container-page">
           <TagList items={service.highlights} />
+          <SectionCta
+            title={`Need ${service.label} in Houston, TX?`}
+            text="Send photos, measurements, artwork, or a deadline and we can help quote the job."
+          />
         </div>
       </section>
 
@@ -53,6 +64,12 @@ export function ServiceTemplate({ service }) {
                 <span className="font-semibold text-graphite">{offering}</span>
               </div>
             ))}
+          </div>
+          <div className="lg:col-span-2">
+            <SectionCta
+              title="Not sure which option fits?"
+              text="Call or WhatsApp the shop and we will help compare materials, sizes, and installation needs."
+            />
           </div>
         </div>
       </section>
@@ -72,6 +89,7 @@ export function ServiceTemplate({ service }) {
               </article>
             ))}
           </div>
+          <SectionCta title="Ready for a quote?" text="A quick call or WhatsApp message is enough to start." />
         </div>
       </section>
 

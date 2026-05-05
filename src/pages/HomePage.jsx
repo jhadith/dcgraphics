@@ -1,13 +1,42 @@
-import { ArrowRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { ArrowRight, BadgeCheck, BriefcaseBusiness, Mail, MapPin, MessageCircle, Phone, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { contact, mediaLibrary, services, sharedBenefits, testimonials } from "../data/siteContent.js";
 import { ContactStrip } from "../components/sections/ContactStrip.jsx";
 import { HeroProductSlider } from "../components/sections/HeroProductSlider.jsx";
+import { SectionCta } from "../components/sections/SectionCta.jsx";
 import { TopicImageSlider } from "../components/sections/TopicImageSlider.jsx";
 import { VerticalWordSlider } from "../components/sections/VerticalWordSlider.jsx";
 import { ButtonLink } from "../components/ui/ButtonLink.jsx";
 import { MediaFrame } from "../components/ui/MediaFrame.jsx";
 import { SectionHeader } from "../components/ui/SectionHeader.jsx";
+import { Seo } from "../components/ui/Seo.jsx";
+
+const trustMetrics = [
+  {
+    value: "25+",
+    label: "Popular products",
+    text: "Printing, signs, apparel, displays, vehicle graphics, and storefront visibility.",
+    icon: BriefcaseBusiness,
+  },
+  {
+    value: "5",
+    label: "Client reviews featured",
+    text: "Real customer feedback from the current DG Graphics website.",
+    icon: Star,
+  },
+  {
+    value: "1",
+    label: "Houston shop",
+    text: "Local production and quote support from Westheimer Rd in Houston, TX.",
+    icon: MapPin,
+  },
+  {
+    value: "0",
+    label: "Contracts required",
+    text: "Project-by-project service, matching the original site promise.",
+    icon: BadgeCheck,
+  },
+];
 
 export function HomePage() {
   const overviewMedia = services[4].media[0];
@@ -31,6 +60,10 @@ export function HomePage() {
 
   return (
     <>
+      <Seo
+        title="DG Graphics LLC | Sign Company Houston, Vehicle Wraps & Printing"
+        description="DG Graphics LLC is a Houston, TX sign company for business signs, vehicle wraps, window graphics, promotional signs, printing, and apparel."
+      />
       <section className="overflow-hidden">
         <div className="container-page grid min-h-[calc(100svh-6.5rem)] gap-8 pt-4 pb-6 lg:grid-cols-[0.88fr_1.12fr] lg:items-center lg:pt-3 lg:pb-8">
           <div className="max-w-3xl">
@@ -70,6 +103,12 @@ export function HomePage() {
                 <Mail size={17} className="text-accent" />
                 {contact.email}
               </a>
+              <Link className="focus-ring flex items-start gap-2 rounded-md hover:text-ink" to="/contact">
+                <MapPin size={17} className="mt-0.5 shrink-0 text-accent" />
+                <span>
+                  Where to find us: Houston, TX. Serving {contact.serviceAreas.slice(1, 5).join(", ")} and nearby areas.
+                </span>
+              </Link>
             </div>
           </div>
 
@@ -105,6 +144,10 @@ export function HomePage() {
             ))}
             <TopicImageSlider items={topicSliderItems} />
           </div>
+          <SectionCta
+            title="See a service that fits your project?"
+            text="Send a photo, size, deadline, or rough idea and we can help shape the quote."
+          />
         </div>
       </section>
 
@@ -123,6 +166,10 @@ export function HomePage() {
               </article>
             ))}
           </div>
+          <SectionCta
+            title="Ready to compare options?"
+            text="Call or message the team for material, installation, and budget guidance."
+          />
         </div>
       </section>
 
@@ -142,6 +189,53 @@ export function HomePage() {
               </figure>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="container-page">
+          <div className="overflow-hidden rounded-2xl border border-white/55 bg-ink text-white shadow-[0_24px_70px_rgba(17,19,24,0.22)]">
+            <div className="relative grid gap-8 p-6 md:p-8 lg:grid-cols-[0.78fr_1.22fr] lg:p-10">
+              <div
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_24%,rgba(244,214,12,0.34),transparent_18rem),radial-gradient(circle_at_88%_20%,rgba(31,159,202,0.32),transparent_20rem),radial-gradient(circle_at_72%_88%,rgba(242,39,47,0.22),transparent_18rem)]"
+                aria-hidden="true"
+              />
+              <div className="relative z-10">
+                <p className="font-display text-sm font-bold uppercase tracking-[0.18em] text-gold">Trust signals</p>
+                <h2 className="mt-4 font-display text-4xl font-black leading-tight sm:text-5xl">
+                  Built to help Houston businesses look ready for customers.
+                </h2>
+                <p className="mt-5 text-base leading-7 text-white/78">
+                  These numbers are based on the current DG Graphics website: its service catalog, visible client reviews,
+                  and local shop information.
+                </p>
+              </div>
+              <div className="relative z-10 grid gap-3 sm:grid-cols-2">
+                {trustMetrics.map((metric) => {
+                  const Icon = metric.icon;
+
+                  return (
+                    <article key={metric.label} className="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur-xl">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <p className="font-display text-5xl font-black text-gold">{metric.value}</p>
+                          <h3 className="mt-2 font-display text-xl font-bold">{metric.label}</h3>
+                        </div>
+                        <span className="grid size-11 shrink-0 place-items-center rounded-md bg-white/12 text-gold">
+                          <Icon size={23} />
+                        </span>
+                      </div>
+                      <p className="mt-4 text-sm leading-6 text-white/76">{metric.text}</p>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+          <SectionCta
+            title="Want your project quoted quickly?"
+            text="Use WhatsApp for the fastest quote path: send photos, measurements, and timeline."
+          />
         </div>
       </section>
 

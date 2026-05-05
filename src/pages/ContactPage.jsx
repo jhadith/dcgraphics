@@ -2,6 +2,7 @@ import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { contact, services } from "../data/siteContent.js";
 import { ButtonLink } from "../components/ui/ButtonLink.jsx";
 import { SectionHeader } from "../components/ui/SectionHeader.jsx";
+import { Seo } from "../components/ui/Seo.jsx";
 
 const contactMethods = [
   {
@@ -33,6 +34,11 @@ const contactMethods = [
 export function ContactPage() {
   return (
     <>
+      <Seo
+        title="Contact DG Graphics LLC | Houston, TX Signs, Wraps & Printing"
+        description="Contact DG Graphics LLC in Houston, TX for quotes on signs, vehicle graphics, window graphics, banners, printing, and apparel."
+      />
+
       <section className="py-16 lg:py-20">
         <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
@@ -57,6 +63,7 @@ export function ContactPage() {
           <div className="grid gap-4 sm:grid-cols-2">
             {contactMethods.map((method) => {
               const Icon = method.icon;
+
               return (
                 <a
                   key={method.label}
@@ -69,6 +76,34 @@ export function ContactPage() {
                 </a>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="container-page grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-accent">Where to find us</p>
+            <h2 className="mt-3 font-display text-4xl font-black leading-tight text-ink">Visit Our Shop in Houston.</h2>
+            <a
+              className="focus-ring mt-5 inline-flex items-start gap-3 rounded-md text-base font-semibold leading-7 text-graphite hover:text-ink"
+              href={contact.mapHref}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MapPin className="mt-1 shrink-0 text-accent" size={20} />
+              {contact.shopAddress}
+            </a>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-white/45 bg-white/55 p-2 shadow-[0_18px_55px_rgba(17,19,24,0.12)] backdrop-blur-2xl">
+            <iframe
+              className="h-[360px] w-full rounded-xl border-0"
+              title="DG Graphics location on Google Maps"
+              src={contact.mapEmbedHref}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </section>
@@ -118,36 +153,6 @@ export function ContactPage() {
                 </span>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="container-page grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-accent">Visit Our Shop in Houston</p>
-            <h2 className="mt-3 font-display text-4xl font-black leading-tight text-ink">
-              Walk in or call — we&apos;ll have your quote ready fast.
-            </h2>
-            <a
-              className="focus-ring mt-5 inline-flex items-start gap-3 rounded-md text-base font-semibold leading-7 text-graphite hover:text-ink"
-              href={contact.mapHref}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <MapPin className="mt-1 shrink-0 text-accent" size={20} />
-              {contact.shopAddress}
-            </a>
-          </div>
-
-          <div className="overflow-hidden rounded-2xl border border-white/45 bg-white/55 p-2 shadow-[0_18px_55px_rgba(17,19,24,0.12)] backdrop-blur-2xl">
-            <iframe
-              className="h-[360px] w-full rounded-xl border-0"
-              title="DG Graphics location on Google Maps"
-              src={contact.mapEmbedHref}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
           </div>
         </div>
       </section>
