@@ -1,6 +1,7 @@
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
-import { contact, services } from "../data/siteContent.js";
+import { contact } from "../data/siteContent.js";
 import { ButtonLink } from "../components/ui/ButtonLink.jsx";
+import { QuoteForm } from "../components/sections/QuoteForm.jsx";
 import { SectionHeader } from "../components/ui/SectionHeader.jsx";
 import { Seo } from "../components/ui/Seo.jsx";
 
@@ -115,20 +116,7 @@ export function ContactPage() {
             title="Send the details that help price the job faster."
             text="Useful details include quantity, size, material, deadline, installation address, vehicle photos, storefront photos, or existing artwork."
           />
-          <div className="rounded-lg border border-line bg-white p-6">
-            <p className="font-display text-xl font-bold text-ink">Services available</p>
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              {services.map((service) => (
-                <a
-                  key={service.slug}
-                  className="focus-ring rounded-md border border-line bg-paper px-4 py-3 text-sm font-semibold text-graphite hover:border-ink hover:bg-white hover:text-ink"
-                  href={`mailto:${contact.email}?subject=Quote%20Request%20-%20${encodeURIComponent(service.label)}`}
-                >
-                  {service.label}
-                </a>
-              ))}
-            </div>
-          </div>
+          <QuoteForm />
         </div>
       </section>
 

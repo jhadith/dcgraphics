@@ -38,6 +38,21 @@ const trustMetrics = [
   },
 ];
 
+const processSteps = [
+  {
+    title: "Design",
+    text: "Confirm idea, size, material, artwork, and business goal.",
+  },
+  {
+    title: "Production",
+    text: "Print, cut, prepare, and finish the project in-house or locally.",
+  },
+  {
+    title: "Installation",
+    text: "Deliver or install with clean placement and practical guidance.",
+  },
+];
+
 export function HomePage() {
   const overviewMedia = services[4].media[0];
   const heroSliderItems = mediaLibrary.hero.map((media) => ({
@@ -69,7 +84,7 @@ export function HomePage() {
           <div className="max-w-3xl">
            
             <h1 className="mt-3 font-display text-6xl font-black leading-[1.01] text-ink sm:text-7xl lg:text-[5.25rem] xl:text-[6.35rem]">
-              WE BUILD <VerticalWordSlider /> THAT GROW YOUR BUSSINESS
+              WE BUILD <VerticalWordSlider /> THAT GROW YOUR BUSINESS
             </h1>
           </div>
 
@@ -166,10 +181,33 @@ export function HomePage() {
               </article>
             ))}
           </div>
-          <SectionCta
-            title="Ready to compare options?"
-            text="Call or message the team for material, installation, and budget guidance."
-          />
+          <div className="lg:col-span-2">
+            <div className="rounded-2xl border border-white/55 bg-white/65 p-4 shadow-[0_18px_55px_rgba(17,19,24,0.10)] backdrop-blur-2xl">
+              <div className="grid gap-3 md:grid-cols-3">
+                {processSteps.map((step, index) => (
+                  <article key={step.title} className="relative rounded-lg border border-navy/10 bg-white/75 p-4">
+                    <div className="flex items-center gap-3">
+                      <span className="grid size-10 shrink-0 place-items-center rounded-md bg-ink font-display text-lg font-black text-gold">
+                        {index + 1}
+                      </span>
+                      <h3 className="font-display text-xl font-black text-ink">{step.title}</h3>
+                    </div>
+                    <p className="mt-3 text-sm leading-6 text-graphite">{step.text}</p>
+                    {index < processSteps.length - 1 ? (
+                      <ArrowRight
+                        className="absolute -right-5 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-gold p-1 text-ink shadow-[0_8px_20px_rgba(17,19,24,0.16)] md:block"
+                        size={30}
+                      />
+                    ) : null}
+                  </article>
+                ))}
+              </div>
+            </div>
+            <SectionCta
+              title="Ready to compare options?"
+              text="Call or message the team for material, installation, and budget guidance."
+            />
+          </div>
         </div>
       </section>
 

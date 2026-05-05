@@ -1,7 +1,7 @@
-import { Menu, Phone, X } from "lucide-react";
+import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { contact, navigation } from "../../data/siteContent.js";
+import { businessSignsDropdown, contact, navigation } from "../../data/siteContent.js";
 import logoMark from "../../assets/logo-dggraphics-mark.png";
 
 export function Header() {
@@ -38,19 +38,50 @@ export function Header() {
         </NavLink>
 
         <nav className="relative z-10 hidden items-center gap-5 lg:flex" aria-label="Main navigation">
-          {navigation.map((item) => (
-            <NavLink
-              key={item.href}
-              to={item.href}
-              className={({ isActive }) =>
-                `focus-ring relative rounded-md px-2 py-2 text-sm font-bold transition-all duration-200 ease-out after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:origin-center after:rounded-full after:bg-highlight after:transition-transform after:duration-200 hover:-translate-y-0.5 hover:bg-white/35 hover:text-navy hover:shadow-[0_8px_22px_rgba(17,19,24,0.08)] hover:after:scale-x-100 ${
-                  isActive ? "bg-white/25 text-navy after:scale-x-100" : "text-graphite after:scale-x-0"
-                }`
-              }
-            >
-              {item.label}
-            </NavLink>
-          ))}
+          {navigation.map((item) =>
+            item.label === "Business Signs" ? (
+              <div key={item.href} className="group relative">
+                <NavLink
+                  to={item.href}
+                  className={({ isActive }) =>
+                    `focus-ring relative inline-flex items-center gap-1 rounded-md px-2 py-2 text-sm font-bold transition-all duration-200 ease-out after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:origin-center after:rounded-full after:bg-highlight after:transition-transform after:duration-200 hover:-translate-y-0.5 hover:bg-white/35 hover:text-navy hover:shadow-[0_8px_22px_rgba(17,19,24,0.08)] hover:after:scale-x-100 ${
+                      isActive ? "bg-white/25 text-navy after:scale-x-100" : "text-graphite after:scale-x-0"
+                    }`
+                  }
+                >
+                  {item.label}
+                  <ChevronDown className="transition-transform group-hover:rotate-180" size={15} />
+                </NavLink>
+                <div className="invisible absolute left-0 top-full w-56 translate-y-2 rounded-lg border border-white/55 bg-white/90 p-2 opacity-0 shadow-[0_18px_45px_rgba(17,19,24,0.16)] backdrop-blur-2xl transition-all duration-200 group-hover:visible group-hover:translate-y-3 group-hover:opacity-100">
+                  {businessSignsDropdown.map((child) => (
+                    <NavLink
+                      key={child.href}
+                      to={child.href}
+                      className={({ isActive }) =>
+                        `focus-ring block rounded-md px-3 py-2 text-sm font-bold transition hover:bg-navy/5 hover:text-navy ${
+                          isActive ? "bg-navy/10 text-navy" : "text-graphite"
+                        }`
+                      }
+                    >
+                      {child.label}
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <NavLink
+                key={item.href}
+                to={item.href}
+                className={({ isActive }) =>
+                  `focus-ring relative rounded-md px-2 py-2 text-sm font-bold transition-all duration-200 ease-out after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:origin-center after:rounded-full after:bg-highlight after:transition-transform after:duration-200 hover:-translate-y-0.5 hover:bg-white/35 hover:text-navy hover:shadow-[0_8px_22px_rgba(17,19,24,0.08)] hover:after:scale-x-100 ${
+                    isActive ? "bg-white/25 text-navy after:scale-x-100" : "text-graphite after:scale-x-0"
+                  }`
+                }
+              >
+                {item.label}
+              </NavLink>
+            ),
+          )}
         </nav>
 
         <div className="relative z-10 hidden flex-col items-center gap-1 lg:flex">
@@ -81,18 +112,37 @@ export function Header() {
         <div className="container-page mt-2 rounded-2xl border border-white/45 bg-white/65 shadow-[0_18px_55px_rgba(17,19,24,0.12)] backdrop-blur-2xl lg:hidden">
           <nav className="grid gap-2 p-3" aria-label="Mobile navigation">
             {navigation.map((item) => (
-              <NavLink
-                key={item.href}
-                to={item.href}
-                onClick={() => setIsOpen(false)}
-                className={({ isActive }) =>
-                  `focus-ring relative rounded-md px-3 py-3 text-sm font-semibold transition-all duration-200 ease-out after:absolute after:inset-x-3 after:bottom-1 after:h-0.5 after:origin-center after:rounded-full after:bg-highlight after:transition-transform after:duration-200 hover:-translate-y-0.5 hover:bg-white/35 hover:text-navy hover:after:scale-x-100 ${
-                    isActive ? "bg-white/25 text-navy after:scale-x-100" : "text-graphite after:scale-x-0"
-                  }`
-                }
-              >
-                {item.label}
-              </NavLink>
+              <div key={item.href}>
+                <NavLink
+                  to={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={({ isActive }) =>
+                    `focus-ring relative block rounded-md px-3 py-3 text-sm font-semibold transition-all duration-200 ease-out after:absolute after:inset-x-3 after:bottom-1 after:h-0.5 after:origin-center after:rounded-full after:bg-highlight after:transition-transform after:duration-200 hover:-translate-y-0.5 hover:bg-white/35 hover:text-navy hover:after:scale-x-100 ${
+                      isActive ? "bg-white/25 text-navy after:scale-x-100" : "text-graphite after:scale-x-0"
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+                {item.label === "Business Signs" ? (
+                  <div className="ml-3 mt-1 grid gap-1 border-l border-navy/10 pl-3">
+                    {businessSignsDropdown.map((child) => (
+                      <NavLink
+                        key={child.href}
+                        to={child.href}
+                        onClick={() => setIsOpen(false)}
+                        className={({ isActive }) =>
+                          `focus-ring rounded-md px-3 py-2 text-sm font-semibold transition hover:bg-white/35 hover:text-navy ${
+                            isActive ? "bg-white/25 text-navy" : "text-graphite"
+                          }`
+                        }
+                      >
+                        {child.label}
+                      </NavLink>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             ))}
             <a
               className="focus-ring mt-2 inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-bold text-navy transition-colors duration-200 hover:text-graphite"
