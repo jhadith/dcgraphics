@@ -26,19 +26,39 @@ export function HeroProductSlider({ items, className = "" }) {
 
       <div className="relative z-10 h-full overflow-hidden rounded-xl bg-white/45">
         {items.map((item, index) => (
-          <img
-            key={item.src}
-            className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${
+          item.type === "video" ? (
+            <video
+              key={item.src}
+              className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${
+                index === activeIndex
+                  ? "translate-y-0 opacity-100"
+                  : index < activeIndex
+                    ? "-translate-y-full opacity-0"
+                    : "translate-y-full opacity-0"
+              }`}
+              src={item.src}
+              aria-label={item.alt}
+              muted
+              loop
+              playsInline
+              autoPlay
+              preload={index === activeIndex ? "auto" : "metadata"}
+            />
+          ) : (
+            <img
+              key={item.src}
+              className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${
               index === activeIndex
                 ? "translate-y-0 opacity-100"
                 : index < activeIndex
                   ? "-translate-y-full opacity-0"
                   : "translate-y-full opacity-0"
-            }`}
-            src={item.src}
-            alt={item.alt}
-            loading={index === 0 ? "eager" : "lazy"}
-          />
+              }`}
+              src={item.src}
+              alt={item.alt}
+              loading={index === 0 ? "eager" : "lazy"}
+            />
+          )
         ))}
 
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/72 via-ink/22 to-transparent p-5 text-white">

@@ -1,6 +1,7 @@
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { contact, navigation } from "../../data/siteContent.js";
+import logoFull from "../../assets/logo-dggraphics.png";
 
 export function Footer() {
   return (
@@ -8,9 +9,7 @@ export function Footer() {
       <div className="container-page grid gap-10 py-12 lg:grid-cols-[1.2fr_0.8fr_1fr]">
         <div>
           <div className="flex items-center gap-3">
-            <span className="grid size-11 place-items-center rounded-md bg-white font-display text-lg font-black text-ink">
-              DG
-            </span>
+            <img className="h-16 w-auto rounded-sm bg-white/95 p-1" src={logoFull} alt="DG Graphics LLC" />
             <div>
               <p className="font-display text-xl font-black">DG Graphics LLC</p>
               <p className="text-sm text-white/70">Printing, signs, wraps, and apparel in Houston.</p>

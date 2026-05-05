@@ -1,3 +1,31 @@
+const localMediaAssets = import.meta.glob(
+  [
+    "../../imagenes/**/*.{jpg,jpeg,png,webp,gif,mp4,MP4}",
+    "!../../imagenes/infoDG-todos/T SHIRTS FLYER.png",
+    "!../../imagenes/infoDG-todos/windogs flyer.png",
+  ],
+  {
+    eager: true,
+    import: "default",
+    query: "?url",
+  },
+);
+
+function localMedia(folder, filename, alt) {
+  const key = `../../imagenes/${folder}/${filename}`;
+  const src = localMediaAssets[key];
+
+  if (!src) {
+    throw new Error(`Missing media asset: ${key}`);
+  }
+
+  return {
+    type: /\.(mp4|webm|mov)$/i.test(filename) ? "video" : "image",
+    src,
+    alt,
+  };
+}
+
 export const contact = {
   phone: "346-213-2938",
   phoneHref: "tel:+13462132938",
@@ -60,26 +88,59 @@ export const testimonials = [
 ];
 
 export const mediaLibrary = {
+  hero: [
+    localMedia("infoDG-todos", "embr hats.jpeg", "Custom embroidered hats by DG Graphics"),
+    localMedia("infoDG-todos", "embroidewry.jpeg", "Embroidery detail from DG Graphics apparel work"),
+    localMedia("infoDG-todos", "lettering.gif", "Vinyl lettering sample from DG Graphics"),
+    localMedia("infoDG-todos", "Window 5.jpg", "Window graphics project by DG Graphics"),
+    localMedia("infoDG-todos", "window 6.webp", "Storefront window graphics sample"),
+    localMedia("infoDG-todos", "WINDOW SIGNS SHIPPING CIA.mp4", "Window sign installation and shipping graphics sample"),
+    localMedia("infoDG-todos", "windows 4.jpg", "Window signs project example"),
+  ],
   signs: [
-    { type: "image", src: "https://dg-graphics.com/wp-content/uploads/2026/04/2.png", alt: "Installed channel letter sign" },
-    { type: "video", src: "https://dg-graphics.com/wp-content/uploads/2026/04/Channel-letters-5.mp4", alt: "Channel letter sign production" },
+    localMedia("bussinessSigns-jpg", "20230308_093419.jpg", "Business storefront sign project in Houston, TX"),
+    localMedia("bussinessSigns-jpg", "20201110_142913.jpg", "Custom business sign installed by DG Graphics"),
+    localMedia("bussinessSigns-jpg", "20221103_212849.jpg", "Illuminated storefront sign for a Houston business"),
+    localMedia("bussinessSigns-jpg", "IMG-20221203-WA0005.jpg", "Business sign production sample"),
+    localMedia("bussinessSigns-jpg", "IMG-20230823-WA0011.jpg", "Commercial sign example by DG Graphics"),
+    localMedia("bussinessSigns-jpg", "IMG-20230823-WA0013.jpg", "Outdoor business signage sample"),
+    localMedia("bussinessSigns-jpg", "IMG-20230915-WA0009.jpg", "Custom sign project detail"),
+    localMedia("bussinessSigns-jpg", "IMG-20230915-WA0018.jpg", "Storefront sign project detail"),
   ],
   wraps: [
-    { type: "image", src: "https://dg-graphics.com/wp-content/uploads/2026/04/10.png", alt: "Commercial vehicle wrap" },
-    { type: "image", src: "https://dg-graphics.com/wp-content/uploads/2026/04/vehicule-warp.png", alt: "Vehicle wrap detail" },
-    { type: "video", src: "https://dg-graphics.com/wp-content/uploads/2026/04/Vehicle-Wraps-1.mp4", alt: "Vehicle wrap installation" },
+    localMedia("vehicleSigns-mp4", "20191024_150746.jpg", "Commercial vehicle graphics project"),
+    localMedia("vehicleSigns-mp4", "20200313_162748.jpg", "Vehicle lettering and graphics detail"),
+    localMedia("vehicleSigns-mp4", "20200313_162749.jpg", "Fleet vehicle graphics installed in Houston"),
+    localMedia("vehicleSigns-mp4", "20191024_150719.mp4", "Vehicle graphics installation video"),
+    localMedia("vehicleSigns-mp4", "20200313_162824.mp4", "Vehicle wrap and lettering video"),
   ],
   windows: [
-    { type: "image", src: "https://dg-graphics.com/wp-content/uploads/2026/04/12.png", alt: "Storefront window graphics" },
-    { type: "image", src: "https://dg-graphics.com/wp-content/uploads/2026/04/9.png", alt: "Window vinyl installation" },
+    localMedia("windowSigns-jpg", "windows 7.png", "Full-color window signs project"),
+    localMedia("windowSigns-jpg", "20230918_115702.jpg", "Storefront window graphics in Houston, TX"),
+    localMedia("windowSigns-jpg", "20220927_140622.jpg", "Window vinyl graphics installation"),
+    localMedia("windowSigns-jpg", "CEJAS WINDOWS SIGNS .jpg", "Window lettering and store information graphics"),
+    localMedia("windowSigns-jpg", "CEJAS WINDOWS SIGNS 2 .jpg", "Storefront window signs project"),
+    localMedia("windowSigns-jpg", "NAILS SAMPLE.jpg", "Nail salon window graphics sample"),
+    localMedia("windowSigns-jpg", "window 3.jpg", "Window graphics design sample"),
+    localMedia("windowSigns-jpg", "windows 4.jpg", "Window sign project example"),
   ],
   banners: [
-    { type: "image", src: "https://dg-graphics.com/wp-content/uploads/2026/04/5.png", alt: "Promotional banner and signs" },
+    localMedia("promotionalSigns-jpd", "DG OUTDOOR SIGNS.png", "Outdoor promotional signs by DG Graphics"),
+    localMedia("promotionalSigns-jpd", "20221213_102717.jpg", "Large promotional sign project"),
+    localMedia("promotionalSigns-jpd", "IMG-20220804-WA0009.jpg", "Promotional yard signs"),
+    localMedia("promotionalSigns-jpd", "IMG-20220804-WA0013.jpg", "Event and promotional sign sample"),
+    localMedia("promotionalSigns-jpd", "z2wBBBRo-s1000.jpg", "Custom promotional sign example"),
+    localMedia("promotionalSigns-jpd", "zCu2lAfi-s1000.jpg", "Printed promotional signage sample"),
   ],
   apparel: [
-    { type: "image", src: "https://dg-graphics.com/wp-content/uploads/2026/04/7.png", alt: "Custom printed apparel" },
-    { type: "image", src: "https://dg-graphics.com/wp-content/uploads/2026/04/3.png", alt: "Printed business products" },
-    { type: "video", src: "https://dg-graphics.com/wp-content/uploads/2026/04/Printing-Apparel.mp4", alt: "Printing and apparel production" },
+    localMedia("printigAndAppareal-todos", "20220616_114951.jpg", "Custom printed apparel project"),
+    localMedia("printigAndAppareal-todos", "20221115_171619 (1).jpg", "Business printing and apparel sample"),
+    localMedia("printigAndAppareal-todos", "IMG-20230227-WA0009.jpg", "Printed apparel detail"),
+    localMedia("printigAndAppareal-todos", "IMG-20230328-WA0057.jpg", "Custom shirt printing sample"),
+    localMedia("printigAndAppareal-todos", "IMG-20230329-WA0017.jpg", "Apparel printing project"),
+    localMedia("printigAndAppareal-todos", "WhatsApp Image 2022-12-24 at 10.00.26 AM (1).jpeg", "Custom printed products sample"),
+    localMedia("printigAndAppareal-todos", "CGQP6052.MP4", "Printing and apparel production video"),
+    localMedia("printigAndAppareal-todos", "EMBROIDERY POLO ICT.mp4", "Embroidery polo production video"),
   ],
 };
 

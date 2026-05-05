@@ -2,6 +2,7 @@ import { Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { contact, navigation } from "../../data/siteContent.js";
+import logoMark from "../../assets/logo-dggraphics-mark.png";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,9 +30,7 @@ export function Header() {
         />
 
         <NavLink className="focus-ring relative z-10 flex items-center gap-3 rounded-md" to="/" onClick={() => setIsOpen(false)}>
-          <span className="grid size-11 place-items-center rounded-md border border-navy/10 bg-white/45 font-display text-lg font-black text-navy">
-            DG
-          </span>
+          <img className="h-12 w-auto shrink-0" src={logoMark} alt="DG Graphics" />
           <span className="leading-tight">
             <span className="block font-display text-lg font-black text-navy">DG Graphics</span>
             <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-graphite">Houston, TX</span>

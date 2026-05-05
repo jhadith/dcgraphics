@@ -1,6 +1,6 @@
 import { ArrowRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import { contact, services, sharedBenefits, testimonials } from "../data/siteContent.js";
+import { contact, mediaLibrary, services, sharedBenefits, testimonials } from "../data/siteContent.js";
 import { ContactStrip } from "../components/sections/ContactStrip.jsx";
 import { HeroProductSlider } from "../components/sections/HeroProductSlider.jsx";
 import { TopicImageSlider } from "../components/sections/TopicImageSlider.jsx";
@@ -11,17 +11,10 @@ import { SectionHeader } from "../components/ui/SectionHeader.jsx";
 
 export function HomePage() {
   const overviewMedia = services[4].media[0];
-  const heroSliderItems = services
-    .flatMap((service) =>
-      service.media
-        .filter((media) => media.type === "image")
-        .map((media) => ({
-          label: service.label,
-          src: media.src,
-          alt: media.alt,
-        })),
-    )
-    .slice(0, 6);
+  const heroSliderItems = mediaLibrary.hero.map((media) => ({
+    ...media,
+    label: "DG Graphics Work",
+  }));
   const topicSliderItems = services
     .map((service) => {
       const image = service.media.find((media) => media.type === "image");
