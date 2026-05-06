@@ -1,4 +1,4 @@
-import { CheckCircle, MapPin, MessageCircle, Phone } from "lucide-react";
+import { MapPin, MessageCircle, Phone } from "lucide-react";
 import { contact } from "../../data/siteContent.js";
 import { ButtonLink } from "../ui/ButtonLink.jsx";
 import { MediaFrame } from "../ui/MediaFrame.jsx";
@@ -19,12 +19,10 @@ export function ServiceTemplate({ service }) {
       />
 
       <section className="border-b border-line">
-        <div className="container-page grid gap-10 py-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:py-20">
-          <div>
+        <div className="container-page grid gap-8 py-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-stretch lg:py-10">
+          <div className="flex max-w-[calc(100vw-2rem)] flex-col justify-center lg:max-w-none lg:-translate-y-8">
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-accent">{service.eyebrow}</p>
-            <h1 className="mt-4 font-display text-4xl font-black leading-tight text-ink sm:text-5xl">{service.title}</h1>
-            <p className="mt-5 text-lg leading-8 text-graphite">{service.summary}</p>
-            <p className="mt-5 text-sm font-bold uppercase tracking-[0.18em] text-graphite">{service.process}</p>
+            <h1 className="mt-4 max-w-[19ch] break-words font-display text-[1.55rem] font-black leading-tight text-ink [overflow-wrap:anywhere] min-[380px]:text-[1.75rem] sm:max-w-none sm:text-5xl sm:[overflow-wrap:normal]">{service.title}</h1>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={contact.phoneHref}>
                 <Phone size={18} />
@@ -36,11 +34,17 @@ export function ServiceTemplate({ service }) {
               </ButtonLink>
             </div>
           </div>
-          <MediaFrame media={featuredMedia} className="aspect-[4/3]" />
+          <div className="relative min-h-[280px] overflow-hidden rounded-lg bg-ink sm:min-h-[430px] lg:min-h-[520px]">
+            {featuredMedia.type === "video" ? (
+              <video className="h-full w-full object-cover" src={featuredMedia.src} aria-label={featuredMedia.alt} muted loop playsInline autoPlay />
+            ) : (
+              <img className="h-full w-full object-cover" src={featuredMedia.src} alt={featuredMedia.alt} loading="eager" />
+            )}
+          </div>
         </div>
       </section>
 
-      <section className="py-12">
+      <section className="py-8">
         <div className="container-page">
           <TagList items={service.highlights} />
           <SectionCta
@@ -50,54 +54,57 @@ export function ServiceTemplate({ service }) {
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-          <SectionHeader
-            eyebrow="What we make"
-            title={`${service.label} options`}
-            text="Choose the format that fits your business, your space, and the way customers discover you."
-          />
-          <div className="grid gap-3 sm:grid-cols-2">
-            {service.offerings.map((offering) => (
-              <div key={offering} className="flex min-h-16 items-center gap-3 rounded-lg border border-line bg-paper px-4">
-                <CheckCircle className="shrink-0 text-cyan" size={20} />
-                <span className="font-semibold text-graphite">{offering}</span>
-              </div>
-            ))}
-          </div>
-          <div className="lg:col-span-2">
-            <SectionCta
-              title="Not sure which option fits?"
-              text="Call or WhatsApp the shop and we will help compare materials, sizes, and installation needs."
-            />
+      <section className="py-10">
+        <div className="container-page">
+          <div className="flex flex-col gap-6 border-y border-ink/10 py-8 lg:flex-row lg:items-center">
+            <div className="lg:w-[28%]">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-accent">What we make</p>
+              <h2 className="mt-3 font-display text-4xl font-black leading-tight text-ink">{service.label} options</h2>
+            </div>
+            <div className="flex flex-wrap gap-3 lg:flex-1">
+              {service.offerings.map((offering, index) => (
+                <span
+                  key={offering}
+                  className="inline-flex min-h-12 items-center gap-3 rounded-full bg-ink px-5 py-2 font-display text-sm font-black uppercase tracking-[0.06em] text-white shadow-[0_14px_32px_rgba(17,19,24,0.14)]"
+                >
+                  <span className="grid size-7 shrink-0 place-items-center rounded-full bg-accent text-xs text-navy">
+                    {index + 1}
+                  </span>
+                  {offering}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-10">
         <div className="container-page">
-          <SectionHeader
-            eyebrow="Why DG Graphics"
-            title="A local team for design, production, and delivery."
-            text="Get practical guidance, clear communication, and finished work made for Houston businesses."
-          />
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {service.benefits.map((benefit) => (
-              <article key={benefit.title} className="rounded-lg border border-line bg-white p-6">
-                <h3 className="font-display text-xl font-bold text-ink">{benefit.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-graphite">{benefit.text}</p>
-              </article>
-            ))}
+          <div className="flex flex-col gap-5 border-y border-ink/10 py-7 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-accent">Why DG Graphics</p>
+              <h2 className="mt-3 font-display text-4xl font-black leading-tight text-ink sm:text-5xl">Built for visibility.</h2>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-3 lg:min-w-[58%]">
+              {service.benefits.map((benefit, index) => (
+                <div key={benefit.title} className="flex items-center gap-3">
+                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-ink font-display text-sm font-black text-accent">
+                    {index + 1}
+                  </span>
+                  <h3 className="font-display text-xl font-black text-ink">{benefit.title}</h3>
+                </div>
+              ))}
+            </div>
           </div>
           <SectionCta title="Ready for a quote?" text="A quick call or WhatsApp message is enough to start." />
         </div>
       </section>
 
       {supportingMedia.length ? (
-        <section className="py-16">
+        <section className="py-10">
           <div className="container-page">
             <SectionHeader eyebrow="Selected work" title="Real project media from DG Graphics." />
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
               {supportingMedia.map((media) => (
                 <MediaFrame key={media.src} media={media} className="aspect-[4/3]" />
               ))}
@@ -106,7 +113,7 @@ export function ServiceTemplate({ service }) {
         </section>
       ) : null}
 
-      <section className="py-16">
+      <section className="py-10">
         <div className="container-page grid gap-8 rounded-lg border border-line bg-white p-6 md:grid-cols-[1fr_1.2fr] md:p-8">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-accent">Visit the shop</p>

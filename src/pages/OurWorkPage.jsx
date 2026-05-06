@@ -21,14 +21,14 @@ export function OurWorkPage() {
         description="See real DG Graphics LLC work in Houston, TX: business signs, vehicle graphics, window graphics, promotional signs, printing, and apparel."
       />
 
-      <section className="py-16 lg:py-20">
+      <section className="py-10 lg:py-12">
         <div className="container-page">
           <SectionHeader
             eyebrow="Real project work"
             title="Signs, wraps, window graphics, banners, printing, and apparel made for local businesses."
             text="Browse examples by topic, then call or WhatsApp the shop with photos, measurements, and your timeline."
           />
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {featuredItems.map((item, index) => (
               <Link
                 key={`${item.src}-${item.topic}`}
@@ -52,7 +52,7 @@ export function OurWorkPage() {
       </section>
 
       {workTopics.map((topic) => (
-        <section key={topic.slug} className="py-14">
+        <section key={topic.slug} className="py-10">
           <div className="container-page">
             <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>

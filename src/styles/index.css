@@ -18,6 +18,7 @@ html {
 body {
   min-width: 320px;
   margin: 0;
+  overflow-x: hidden;
   background-color: #fbfbf8;
   background-image:
     url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23paper)' opacity='0.11'/%3E%3C/svg%3E"),
@@ -44,6 +45,11 @@ body {
     auto,
     auto;
   background-attachment: fixed;
+}
+
+#root {
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 img,
@@ -117,8 +123,102 @@ a {
   }
 }
 
+@media (max-width: 639px) {
+  .vertical-word-slider {
+    display: block;
+    width: 100%;
+    max-width: calc(100vw - 2rem);
+  }
+
+  .vertical-word-track {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .vertical-word {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+  }
+}
+
+.service-story-panel {
+  isolation: isolate;
+}
+
+.service-story-media {
+  transform: scale(1.08);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.service-story-scroll-shade {
+  background: #111318;
+  opacity: 0;
+  will-change: opacity;
+}
+
+@supports (animation-timeline: view()) {
+  .service-story-media {
+    animation: service-story-drift linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+
+  .service-story-copy {
+    animation: service-story-copy linear both;
+    animation-timeline: view();
+    animation-range: entry 8% cover 44%;
+  }
+
+  .service-story-scroll-shade {
+    animation: service-story-darken linear both;
+    animation-timeline: view();
+    animation-range: cover 58% exit 100%;
+  }
+}
+
+@keyframes service-story-drift {
+  from {
+    transform: scale(1.14) translateY(-4%);
+  }
+
+  to {
+    transform: scale(1.04) translateY(4%);
+  }
+}
+
+@keyframes service-story-copy {
+  from {
+    opacity: 0.74;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes service-story-darken {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.68;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .vertical-word-track {
+    animation: none;
+  }
+
+  .service-story-media,
+  .service-story-copy,
+  .service-story-scroll-shade {
     animation: none;
   }
 }

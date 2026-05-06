@@ -55,13 +55,6 @@ export const navigation = [
   { label: "Contact", href: "/contact" },
 ];
 
-export const businessSignsDropdown = [
-  { label: "Window Graphics", href: "/window-graphics" },
-  { label: "Channel Letters", href: "/channel-letters" },
-  { label: "Light Box Signs", href: "/light-box-signs" },
-  { label: "Pylon Signs", href: "/pylon-signs" },
-];
-
 export const sharedBenefits = [
   {
     title: "Custom design support",
@@ -310,73 +303,4 @@ export const workTopics = [
   { label: "Window Graphics", slug: "window-graphics", media: mediaLibrary.windows },
   { label: "Promotional Signs", slug: "promotional-signs", media: mediaLibrary.banners },
   { label: "Printing & Apparel", slug: "printing-apparel", media: mediaLibrary.apparel },
-];
-
-export const subServices = [
-  {
-    slug: "channel-letters",
-    parentSlug: "business-signs",
-    label: "Channel Letters",
-    keyword: "channel letters Houston",
-    title: "Channel letters in Houston, TX for storefront visibility.",
-    summary:
-      "Custom channel letters help your storefront look professional day and night with dimensional, illuminated signage built around your brand.",
-    offerings: ["Front-lit letters", "Dimensional letters", "Storefront letters", "LED options", "Design support", "Installation guidance"],
-    media: mediaLibrary.signs,
-  },
-  {
-    slug: "light-box-signs",
-    parentSlug: "business-signs",
-    label: "Light Box Signs",
-    keyword: "light box signs Houston",
-    title: "Light box signs in Houston, TX for bright daily exposure.",
-    summary:
-      "Light box signs give businesses a clear illuminated presence for storefronts, plazas, and high-traffic locations.",
-    offerings: ["Illuminated sign faces", "Cabinet signs", "Storefront light boxes", "Replacement faces", "Outdoor materials", "Installation support"],
-    media: mediaLibrary.signs,
-  },
-  {
-    slug: "pylon-signs",
-    parentSlug: "business-signs",
-    label: "Pylon Signs",
-    keyword: "pylon signs Houston",
-    title: "Pylon signs in Houston, TX for roadside business visibility.",
-    summary:
-      "Pylon and tall outdoor signs help customers find your business from the road, parking lot, or shopping center entrance.",
-    offerings: ["Roadside signs", "Multi-tenant signs", "Outdoor sign faces", "Directional visibility", "Durable materials", "Quote guidance"],
-    media: mediaLibrary.signs,
-  },
-  {
-    slug: "full-wraps",
-    parentSlug: "vehicle-graphics",
-    label: "Full Wraps",
-    keyword: "vehicle wraps Houston",
-    title: "Full vehicle wraps in Houston, TX that turn vehicles into advertising.",
-    summary:
-      "Full wraps cover cars, trucks, vans, and fleet vehicles with brand graphics that promote your business everywhere you drive.",
-    offerings: ["Full vehicle wraps", "Fleet wraps", "Van wraps", "Truck wraps", "Brand design", "Vinyl installation"],
-    media: mediaLibrary.wraps,
-  },
-  {
-    slug: "custom-banners",
-    parentSlug: "promotional-signs",
-    label: "Custom Banners",
-    keyword: "banners Houston",
-    title: "Custom banners in Houston, TX for events, openings, and promotions.",
-    summary:
-      "Banners are a fast, flexible way to promote grand openings, events, sales, real estate, and temporary business messages.",
-    offerings: ["Vinyl banners", "Event banners", "Grand opening banners", "Outdoor banners", "Retractable options", "Fast quote support"],
-    media: mediaLibrary.banners,
-  },
-  {
-    slug: "business-cards",
-    parentSlug: "printing-apparel",
-    label: "Business Cards",
-    keyword: "business cards Houston",
-    title: "Business cards in Houston, TX for sharp first impressions.",
-    summary:
-      "Printed business cards keep your brand ready for meetings, networking, walk-ins, and customer follow-up.",
-    offerings: ["Full-color cards", "Matte or glossy options", "Brand layout help", "Small business cards", "Print-ready artwork", "Local pickup"],
-    media: mediaLibrary.apparel,
-  },
 ];

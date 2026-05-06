@@ -40,8 +40,8 @@ export function ContactPage() {
         description="Contact DG Graphics LLC in Houston, TX for quotes on signs, vehicle graphics, window graphics, banners, printing, and apparel."
       />
 
-      <section className="py-16 lg:py-20">
-        <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <section className="py-10 lg:py-12">
+        <div className="container-page grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-accent">Hablamos Espanol</p>
             <h1 className="mt-4 font-display text-5xl font-black leading-tight text-ink">Contact DG Graphics.</h1>
@@ -49,7 +49,7 @@ export function ContactPage() {
               Call, WhatsApp, email, or stop by the Houston shop for free quotes on signs, wraps, window graphics,
               banners, printing, and apparel.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={contact.phoneHref}>
                 <Phone size={18} />
                 Call Now
@@ -81,7 +81,7 @@ export function ContactPage() {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-10">
         <div className="container-page grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-accent">Where to find us</p>
@@ -109,8 +109,8 @@ export function ContactPage() {
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+      <section className="py-10">
+        <div className="container-page grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <SectionHeader
             eyebrow="Request a quote"
             title="Send the details that help price the job faster."
@@ -120,7 +120,7 @@ export function ContactPage() {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-10">
         <div className="container-page grid gap-8 rounded-2xl border border-white/45 bg-white/55 p-6 shadow-[0_18px_55px_rgba(17,19,24,0.12)] backdrop-blur-2xl md:grid-cols-3 md:p-8">
           <div>
             <p className="font-display text-sm font-bold uppercase tracking-[0.18em] text-accent">Business hours</p>
