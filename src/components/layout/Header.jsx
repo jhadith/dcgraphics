@@ -87,14 +87,13 @@ export function Header() {
         </div>
 
         <button
-          className="focus-ring absolute left-28 top-1/2 z-20 inline-flex min-h-10 -translate-y-1/2 items-center gap-2 rounded-md border border-navy/15 bg-white/90 px-3 text-sm font-black text-navy shadow-[0_10px_24px_rgba(17,19,24,0.12)] transition hover:text-graphite lg:hidden"
+          className="focus-ring absolute right-4 top-1/2 z-20 grid size-11 -translate-y-1/2 place-items-center rounded-md border border-navy/15 bg-white/90 text-navy shadow-[0_10px_24px_rgba(17,19,24,0.12)] transition hover:text-graphite sm:right-6 lg:hidden"
           type="button"
           aria-label="Toggle navigation"
           aria-expanded={isOpen}
           onClick={() => setIsOpen((value) => !value)}
         >
           {isOpen ? <X size={20} /> : <Menu size={20} />}
-          Menu
         </button>
       </div>
 
