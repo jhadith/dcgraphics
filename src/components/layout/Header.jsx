@@ -7,24 +7,40 @@ import logoMark from "../../assets/logo-dggraphics-mark.png";
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOverDarkSection, setIsOverDarkSection] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 12);
+      const sampleY = Math.min(window.innerHeight - 1, 82);
+      const sampledElement = document.elementFromPoint(window.innerWidth / 2, sampleY);
+      setIsOverDarkSection(Boolean(sampledElement?.closest('[data-header-theme="dark"]')));
     };
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/34 shadow-[0_18px_55px_rgba(17,19,24,0.10)] backdrop-blur-2xl backdrop-saturate-150">
-      <div className="relative flex min-h-16 w-full items-center justify-between gap-2 overflow-visible border-b border-white/55 bg-white/42 px-4 sm:px-6 lg:min-h-[4.5rem] lg:px-8">
+    <header
+      className={`sticky top-0 z-50 shadow-[0_18px_55px_rgba(17,19,24,0.10)] backdrop-blur-2xl backdrop-saturate-150 transition-colors duration-300 ${
+        isOverDarkSection ? "bg-ink/48" : "bg-white/34"
+      }`}
+    >
+      <div
+        className={`relative flex min-h-16 w-full items-center justify-between gap-2 overflow-visible border-b px-4 transition-colors duration-300 sm:px-6 lg:min-h-[4.5rem] lg:px-8 ${
+          isOverDarkSection ? "border-white/15 bg-ink/34" : "border-white/55 bg-white/42"
+        }`}
+      >
         <div
           className={`pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(244,214,12,0.24)_0%,rgba(255,255,255,0.72)_24%,rgba(255,255,255,0.48)_68%,rgba(247,224,44,0.34)_100%)] transition-opacity duration-300 ease-out ${
-            isScrolled ? "opacity-0" : "opacity-100"
+            isScrolled || isOverDarkSection ? "opacity-0" : "opacity-100"
           }`}
           aria-hidden="true"
         />
@@ -43,8 +59,10 @@ export function Header() {
               key={item.href}
               to={item.href}
               className={({ isActive }) =>
-                `focus-ring relative flex min-h-10 items-center rounded-md px-2 py-2 text-xs font-black leading-none transition-all duration-200 ease-out after:absolute after:inset-x-2 after:bottom-1 after:h-0.5 after:origin-center after:rounded-full after:bg-highlight after:transition-transform after:duration-200 hover:bg-white/40 hover:text-navy hover:shadow-[0_8px_22px_rgba(17,19,24,0.08)] hover:after:scale-x-100 xl:px-2.5 xl:text-sm ${
-                  isActive ? "bg-white/25 text-navy after:scale-x-100" : "text-graphite after:scale-x-0"
+                `focus-ring relative flex min-h-10 items-center rounded-md px-2 py-2 text-xs font-black leading-none transition-all duration-200 ease-out after:absolute after:inset-x-2 after:bottom-1 after:h-0.5 after:origin-center after:rounded-full after:bg-highlight after:transition-transform after:duration-200 hover:shadow-[0_8px_22px_rgba(17,19,24,0.08)] hover:after:scale-x-100 xl:px-2.5 xl:text-sm ${
+                  isOverDarkSection
+                    ? `hover:bg-white/14 hover:text-white ${isActive ? "bg-white/12 text-white after:scale-x-100" : "text-white/86 after:scale-x-0"}`
+                    : `hover:bg-white/40 hover:text-navy ${isActive ? "bg-white/25 text-navy after:scale-x-100" : "text-graphite after:scale-x-0"}`
                 }`
               }
             >
@@ -55,13 +73,15 @@ export function Header() {
 
         <div className="relative z-10 hidden min-w-[120px] flex-col items-center gap-0.5 pr-1 lg:flex xl:min-w-[136px]">
           <a
-            className="focus-ring inline-flex items-center justify-center gap-1.5 rounded-md text-xs font-black text-navy transition-colors duration-200 hover:text-graphite xl:text-sm"
+            className={`focus-ring inline-flex items-center justify-center gap-1.5 rounded-md text-xs font-black transition-colors duration-200 xl:text-sm ${
+              isOverDarkSection ? "text-white hover:text-accent" : "text-navy hover:text-graphite"
+            }`}
             href={contact.phoneHref}
           >
             <Phone size={17} />
             {contact.phone}
           </a>
-          <span className="text-center text-[11px] font-bold text-graphite">
+          <span className={`text-center text-[11px] font-bold ${isOverDarkSection ? "text-white/76" : "text-graphite"}`}>
             English/Spanish
           </span>
         </div>

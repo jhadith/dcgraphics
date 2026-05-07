@@ -4,7 +4,7 @@ import { ButtonLink } from "../ui/ButtonLink.jsx";
 
 export function ContactStrip({ title = "Ready to start your project?", text = "Call, WhatsApp, or email DG Graphics for a free quote." }) {
   return (
-    <section className="bg-ink py-14 text-white lg:py-16">
+    <section className="bg-ink py-14 text-white lg:py-16" data-header-theme="dark">
       <div className="container-page flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-2xl">
           <h2 className="font-display text-4xl font-black leading-[1.04] tracking-normal sm:text-5xl">{title}</h2>

@@ -59,6 +59,36 @@ const processSteps = [
   },
 ];
 
+const homeServiceMediaPreferences = {
+  "business-signs": {
+    alt: "Snow Point storefront sign project",
+    objectPosition: "center center",
+  },
+  "vehicle-graphics": {
+    alt: "Large truck sign graphics project",
+    objectPosition: "center center",
+  },
+  "promotional-signs": {
+    alt: "Walk sign promotional display",
+    objectPosition: "center bottom",
+  },
+};
+
+function getHomeServiceMedia(service) {
+  const preference = homeServiceMediaPreferences[service.slug];
+  const preferredMedia = preference ? service.media.find((item) => item.alt === preference.alt) : null;
+
+  return {
+    media:
+      preferredMedia ??
+      (service.slug === "business-signs"
+        ? service.media.find((item) => item.src.includes("20221103_212849"))
+        : service.media.find((item) => item.type === "image")) ??
+      service.media[0],
+    objectPosition: preference?.objectPosition,
+  };
+}
+
 export function HomePage() {
   const heroMedia = mediaLibrary.hero.find((media) => media.alt === "Window graphics project by DG Graphics") ?? mediaLibrary.hero[0];
   const recentMotionWork = [
@@ -82,7 +112,7 @@ export function HomePage() {
         title="DG Graphics LLC | Sign Company Houston, Vehicle Wraps & Printing"
         description="DG Graphics LLC is a Houston, TX sign company for business signs, vehicle wraps, window graphics, promotional signs, printing, and apparel."
       />
-      <section className="hero-background-slider relative min-h-[calc(100svh-4.5rem)] overflow-hidden bg-ink text-white">
+      <section className="hero-background-slider relative min-h-[calc(100svh-4.5rem)] overflow-hidden bg-ink text-white" data-header-theme="dark">
         <img className="absolute inset-0 h-full w-full object-cover" src={heroMedia.src} alt={heroMedia.alt} loading="eager" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,19,24,0.82)_0%,rgba(17,19,24,0.56)_38%,rgba(17,19,24,0.12)_76%,rgba(17,19,24,0.04)_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,19,24,0.32)_0%,transparent_46%,rgba(17,19,24,0.46)_100%)]" />
@@ -135,31 +165,37 @@ export function HomePage() {
 
       </section>
 
-      <section className="service-scroll-stack relative">
+      <section className="service-scroll-stack relative" data-header-theme="dark">
         <div>
           {services.map((service) => {
-            const media =
-              service.slug === "business-signs"
-                ? service.media.find((item) => item.src.includes("20221103_212849"))
-                : service.media.find((item) => item.type === "image") ?? service.media[0];
+            const { media, objectPosition } = getHomeServiceMedia(service);
+            const mediaStyle = objectPosition ? { objectPosition } : undefined;
 
             return (
               <article
                 key={service.slug}
                 className="service-story-panel group sticky top-0 h-[88svh] min-h-[520px] overflow-hidden bg-ink text-white sm:h-screen sm:min-h-[620px]"
+                data-header-theme="dark"
               >
                 {media.type === "video" ? (
                   <video
                     className="service-story-media absolute inset-0 h-full w-full object-cover"
                     src={media.src}
                     aria-label={media.alt}
+                    style={mediaStyle}
                     muted
                     loop
                     playsInline
                     autoPlay
                   />
                 ) : (
-                  <img className="service-story-media absolute inset-0 h-full w-full object-cover" src={media.src} alt={media.alt} loading="lazy" />
+                  <img
+                    className="service-story-media absolute inset-0 h-full w-full object-cover"
+                    src={media.src}
+                    alt={media.alt}
+                    style={mediaStyle}
+                    loading="lazy"
+                  />
                 )}
                 <div className="service-story-scroll-shade absolute inset-0 z-[1] bg-ink/0" />
                 <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,19,24,0.88)_0%,rgba(17,19,24,0.62)_36%,rgba(17,19,24,0.16)_72%,rgba(17,19,24,0.04)_100%)]" />
@@ -189,7 +225,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="bg-ink py-16 text-white lg:py-20">
+      <section className="bg-ink py-16 text-white lg:py-20" data-header-theme="dark">
         <div className="container-page">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>

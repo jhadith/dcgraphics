@@ -5,7 +5,7 @@ import logoFull from "../../assets/logo-dggraphics.png";
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-ink text-white">
+    <footer className="border-t border-line bg-ink text-white" data-header-theme="dark">
       <div className="container-page grid gap-8 py-8 lg:grid-cols-[1.2fr_0.8fr_1fr]">
         <div>
           <div className="flex items-center gap-3">

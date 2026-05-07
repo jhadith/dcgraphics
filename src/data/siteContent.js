@@ -103,6 +103,7 @@ export const mediaLibrary = {
     localMedia("bussinessSigns-jpg/bussinessSignsNew", "creativefabrica-ai-image-editor-0-bot (5).png", "Custom storefront sign concept by DG Graphics"),
     localMedia("bussinessSigns-jpg/bussinessSignsNew", "dealer sign.png", "Dealer business sign project by DG Graphics"),
     localMedia("bussinessSigns-jpg/bussinessSignsNew", "medical clinic.png", "Medical clinic storefront sign project"),
+    localMedia("bussinessSigns-jpg/bussinessSignsNew", "snowPoint.png", "Snow Point storefront sign project"),
     localMedia("bussinessSigns-jpg/bussinessSignsNew", "snow channel.png", "Channel letter sign project sample"),
     localMedia("bussinessSigns-jpg/bussinessSignsNew", "TREASURE FOR LESS.png", "Treasure For Less storefront sign project"),
     localMedia("bussinessSigns-jpg", "20230308_093419.jpg", "Business storefront sign project in Houston, TX"),
@@ -114,7 +115,6 @@ export const mediaLibrary = {
     localMedia("bussinessSigns-jpg", "IMG-20230915-WA0009.jpg", "Custom sign project detail"),
   ],
   wraps: [
-    localMedia("vehicleSigns-mp4/vehicleSignsNew", "20200903_092533.jpg", "Vehicle graphics project by DG Graphics"),
     localMedia("vehicleSigns-mp4/vehicleSignsNew", "BIG TRUCK SIGN.png", "Large truck sign graphics project"),
     localMedia("vehicleSigns-mp4/vehicleSignsNew", "CDKF0696.JPG", "Commercial vehicle wrap project"),
     localMedia("vehicleSigns-mp4/vehicleSignsNew", "FAMILY HOUSE CLEANING CAR SIGNS .jpg", "Cleaning company vehicle lettering project"),
