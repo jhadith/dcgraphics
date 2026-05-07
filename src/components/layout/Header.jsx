@@ -1,34 +1,115 @@
 import { Menu, Phone, X } from "lucide-react";
-import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { contact, navigation } from "../../data/siteContent.js";
 import logoMark from "../../assets/logo-dggraphics-mark.png";
 
 export function Header() {
+  const headerRef = useRef(null);
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isOverDarkSection, setIsOverDarkSection] = useState(false);
+  const [activeHeaderTheme, setActiveHeaderTheme] = useState("light");
+  const isOverDarkSection = isScrolled && activeHeaderTheme === "dark";
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 12);
-      const sampleY = Math.min(window.innerHeight - 1, 82);
-      const sampledElement = document.elementFromPoint(window.innerWidth / 2, sampleY);
-      setIsOverDarkSection(Boolean(sampledElement?.closest('[data-header-theme="dark"]')));
+      const hasScrolled = window.scrollY > 1;
+      setIsScrolled(hasScrolled);
+
+      if (!hasScrolled) {
+        setActiveHeaderTheme("light");
+      }
     };
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
+  useEffect(() => {
+    let observer;
+    let animationFrame;
+    let resizeFrame;
+    const intersectingSections = new Set();
+
+    const getSectionTheme = (section) => section.dataset.theme ?? section.dataset.headerTheme ?? "light";
+
+    const updateTheme = (sampleY) => {
+      if (window.scrollY <= 1) {
+        setActiveHeaderTheme("light");
+        return;
+      }
+
+      const activeSection = Array.from(intersectingSections)
+        .filter((section) => {
+          const rect = section.getBoundingClientRect();
+          return rect.top <= sampleY && rect.bottom >= sampleY;
+        })
+        .sort((first, second) => {
+          const firstDistance = Math.abs(first.getBoundingClientRect().top - sampleY);
+          const secondDistance = Math.abs(second.getBoundingClientRect().top - sampleY);
+          return firstDistance - secondDistance;
+        })[0];
+
+      setActiveHeaderTheme(activeSection ? getSectionTheme(activeSection) : "light");
+    };
+
+    const createObserver = () => {
+      observer?.disconnect();
+      intersectingSections.clear();
+
+      const headerHeight = headerRef.current?.getBoundingClientRect().height ?? 72;
+      const sampleY = Math.max(1, Math.round(headerHeight / 2));
+      const bottomMargin = Math.max(0, window.innerHeight - sampleY - 1);
+      const sections = document.querySelectorAll("[data-header-theme], [data-theme]");
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              intersectingSections.add(entry.target);
+            } else {
+              intersectingSections.delete(entry.target);
+            }
+          });
+
+          updateTheme(sampleY);
+        },
+        {
+          root: null,
+          rootMargin: `-${sampleY}px 0px -${bottomMargin}px 0px`,
+          threshold: 0,
+        },
+      );
+
+      sections.forEach((section) => observer.observe(section));
+      updateTheme(sampleY);
+    };
+
+    animationFrame = window.requestAnimationFrame(createObserver);
+
+    const handleResize = () => {
+      window.cancelAnimationFrame(resizeFrame);
+      resizeFrame = window.requestAnimationFrame(createObserver);
+    };
+
+    window.addEventListener("resize", handleResize, { passive: true });
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      window.cancelAnimationFrame(resizeFrame);
+      window.removeEventListener("resize", handleResize);
+      observer?.disconnect();
+    };
+  }, [location.pathname]);
+
   return (
     <header
+      ref={headerRef}
       className={`sticky top-0 z-50 shadow-[0_18px_55px_rgba(17,19,24,0.10)] backdrop-blur-2xl backdrop-saturate-150 transition-colors duration-300 ${
         isOverDarkSection ? "bg-ink/48" : "bg-white/34"
       }`}
@@ -53,7 +134,12 @@ export function Header() {
           <img className="h-9 w-auto shrink-0 object-contain sm:h-10 lg:h-12" src={logoMark} alt="DG Graphics" />
         </NavLink>
 
-        <nav className="relative z-10 hidden flex-1 items-stretch justify-start gap-1 lg:flex xl:gap-1.5" aria-label="Main navigation">
+        <nav
+          className={`relative z-10 hidden flex-1 items-stretch justify-start gap-1 lg:flex xl:gap-1.5 ${
+            isOverDarkSection ? "nav-light-text" : ""
+          }`}
+          aria-label="Main navigation"
+        >
           {navigation.map((item) => (
             <NavLink
               key={item.href}
