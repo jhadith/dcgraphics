@@ -189,21 +189,21 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="bg-ink py-10 text-white">
+      <section className="bg-ink py-16 text-white lg:py-20">
         <div className="container-page">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="font-display text-sm font-black uppercase tracking-[0.22em] text-accent">Motion gallery</p>
-              <h2 className="mt-3 font-display text-4xl font-black uppercase leading-tight sm:text-5xl">Our Recent Work</h2>
+              <h2 className="mt-4 font-display text-4xl font-black uppercase leading-[1.02] sm:text-6xl">Our Recent Work</h2>
             </div>
-            <p className="max-w-xl text-sm font-semibold leading-6 text-white/68">
+            <p className="max-w-xl text-base font-semibold leading-7 text-white/68">
               Real project videos and animated samples from DG Graphics work.
             </p>
           </div>
 
-          <div className="mt-5 grid gap-4 md:grid-cols-3">
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
             {recentMotionWork.map((item) => (
-              <article key={item.title} className="group overflow-hidden rounded-lg border border-white/12 bg-white/8 shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
+              <article key={item.title} className="group overflow-hidden rounded-xl bg-white/8 shadow-[0_18px_50px_rgba(0,0,0,0.18)]">
                 <div className="relative aspect-[4/3] overflow-hidden bg-black">
                   {item.media.type === "video" ? (
                     <video className="h-full w-full object-cover transition duration-500 group-hover:scale-105" src={item.media.src} muted loop playsInline autoPlay />
@@ -220,23 +220,23 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="bg-[#f3f6fb] py-10">
+      <section className="bg-[#f3f6fb] py-16 lg:py-20">
         <div className="container-page">
           <div className="text-center">
-            <h2 className="font-display text-4xl font-black text-navy sm:text-5xl">Our Process</h2>
-            <p className="mt-3 text-lg font-medium text-graphite/72">Simple, fast and professional from idea to installation</p>
-            <div className="mx-auto mt-5 inline-flex items-center gap-2 rounded-full border border-accent/35 bg-ink px-6 py-3 text-sm font-black uppercase tracking-[0.18em] text-accent shadow-[0_18px_45px_rgba(17,19,24,0.12)]">
+            <h2 className="font-display text-4xl font-black leading-[1.02] text-navy sm:text-6xl">Our Process</h2>
+            <p className="mt-4 text-xl font-semibold leading-8 text-graphite/72">Simple, fast and professional from idea to installation</p>
+            <div className="mx-auto mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-black uppercase tracking-[0.18em] text-accent shadow-[0_18px_45px_rgba(17,19,24,0.10)]">
               <BadgeCheck size={18} />
               No. 1 Sign Company in Houston, TX
             </div>
           </div>
 
-          <div className="relative mx-auto mt-7 max-w-6xl">
+          <div className="relative mx-auto mt-10 max-w-6xl">
             <div className="absolute left-[16%] right-[16%] top-[5.6rem] hidden h-0.5 bg-accent md:block" aria-hidden="true" />
             <div className="grid gap-8 md:grid-cols-3">
               {processSteps.map((step) => (
                 <article key={step.title} className="relative z-10 text-center">
-                  <div className="mx-auto grid size-24 place-items-center rounded-full border border-white/75 bg-white/80 shadow-[0_18px_50px_rgba(17,19,24,0.10)] backdrop-blur-xl">
+                  <div className="mx-auto grid size-24 place-items-center rounded-full bg-white shadow-[0_18px_50px_rgba(17,19,24,0.10)]">
                     <img className="size-12 object-contain" src={step.icon} alt="" aria-hidden="true" loading="lazy" />
                   </div>
                   <div className="mx-auto -mt-2 grid size-16 place-items-center rounded-full bg-accent font-display text-3xl font-black text-navy shadow-[0_14px_32px_rgba(244,214,12,0.28)]">
@@ -251,12 +251,12 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="py-10">
+      <section className="py-16 lg:py-20">
         <div className="container-page">
           <SectionHeader eyebrow="Reviews" title="Trusted by Houston businesses." />
-          <div className="mt-5 grid gap-4 md:grid-cols-3">
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
             {testimonials.map((item) => (
-              <figure key={item.name} className="rounded-lg border border-line bg-white p-6">
+              <figure key={item.name} className="rounded-xl bg-white/85 p-7 shadow-[0_16px_42px_rgba(17,19,24,0.08)]">
                 <div className="flex gap-1 text-gold" aria-label="Five star review">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <span key={index}>*</span>
@@ -270,17 +270,17 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="py-10">
+      <section className="py-16 lg:py-20">
         <div className="container-page">
-          <div className="overflow-hidden rounded-2xl border border-white/55 bg-ink text-white shadow-[0_24px_70px_rgba(17,19,24,0.22)]">
-            <div className="relative grid gap-8 p-6 md:p-8 lg:grid-cols-[0.78fr_1.22fr] lg:p-10">
+          <div className="overflow-hidden rounded-xl bg-ink text-white shadow-[0_24px_70px_rgba(17,19,24,0.20)]">
+            <div className="relative grid gap-10 p-6 md:p-8 lg:grid-cols-[0.78fr_1.22fr] lg:p-12">
               <div
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_24%,rgba(244,214,12,0.34),transparent_18rem),radial-gradient(circle_at_88%_20%,rgba(31,159,202,0.32),transparent_20rem),radial-gradient(circle_at_72%_88%,rgba(242,39,47,0.22),transparent_18rem)]"
                 aria-hidden="true"
               />
               <div className="relative z-10">
                 <p className="font-display text-sm font-bold uppercase tracking-[0.18em] text-gold">Trust signals</p>
-                <h2 className="mt-4 font-display text-4xl font-black leading-tight sm:text-5xl">
+                <h2 className="mt-4 font-display text-4xl font-black leading-[1.04] sm:text-6xl">
                   Built to help Houston businesses look ready for customers.
                 </h2>
                 <p className="mt-5 text-base leading-7 text-white/78">
@@ -293,7 +293,7 @@ export function HomePage() {
                   const Icon = metric.icon;
 
                   return (
-                    <article key={metric.label} className="rounded-lg border border-white/15 bg-white/10 p-5 backdrop-blur-xl">
+                    <article key={metric.label} className="rounded-xl bg-white/10 p-5 backdrop-blur-xl">
                       <div className="flex items-start justify-between gap-4">
                         <div>
                           <p className="font-display text-5xl font-black text-gold">{metric.value}</p>

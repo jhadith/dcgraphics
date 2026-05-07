@@ -36,7 +36,7 @@ export function QuoteForm() {
   }
 
   return (
-    <form className="rounded-2xl border border-white/55 bg-white/75 p-5 shadow-[0_18px_55px_rgba(17,19,24,0.12)] backdrop-blur-2xl" onSubmit={handleSubmit}>
+    <form className="rounded-xl bg-white/[0.86] p-5 shadow-[0_18px_46px_rgba(17,19,24,0.10)] backdrop-blur-xl" onSubmit={handleSubmit}>
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="grid gap-2 text-sm font-bold text-graphite">
           Name
